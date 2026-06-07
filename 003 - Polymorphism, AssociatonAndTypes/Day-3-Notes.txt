@@ -1,0 +1,23 @@
+Day 3 Notes
+
+Topics practiced:
+- Association in Java objects
+- Aggregation
+- Composition
+- Polymorphism basics
+- Method overloading
+- Runtime polymorphism with parent references
+- Upcasting and downcasting
+- String operations
+- Object-based practice exercises
+
+Main practice areas:
+- Person and Passport relationships
+- Address and person relationships
+- Car and engine style composition examples
+- Calculator overloads for byte, short, int, long, float, double, Integer, and String
+- Parent and child class examples
+- Bank account and related object behavior
+
+Notes:
+- The day combines association-type examples with polymorphism practice, but the progression from object relationships to polymorphic behavior is coherent
