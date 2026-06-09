@@ -1,0 +1,49 @@
+Day 4 Notes
+
+Topics practiced:
+- Wrapper classes
+- Boxing, autoboxing, and unboxing
+- Wrapper-based method overloading
+- StringBuilder and StringBuffer
+- Mutable string operations
+- insert, delete, replace, reverse, and capacity
+- Exception handling with try, catch, and finally
+- Built-in exceptions such as ArithmeticException and InputMismatchException
+- Custom exceptions
+- Throwing exceptions manually
+- Interface-based practice mixed into the wrapperClasses module
+
+Main practice areas:
+- Integer, Boolean, Double, Float, and Short wrapper examples
+- Overloaded add methods in Calculator
+- StringBuilder vs StringBuffer behavior
+- Custom invitation check using NotInvited exception
+- Interface demos for Shape, Animal, Payment, and Message
+
+
+
+String builder, String Buffer methods - insert, delete, replace, reverse
+
+
+Wrapper Classes, Autoboxing, unboxing, boxing
+- int to Integer
+- bool to Boolean
+- double to Double
+- float to Float
+- short to Short
+- Polymorphic Calculator
+
+
+interfaces
+- Shape: rectangle, circle
+- Animal: Lion, dog, deer
+- Message: text, WhatsApp, email
+- Payment: upi, debit, credit
+
+
+Exception handling: Custom exceptions, checked, unchecked, throws, try & catch, finally
+
+- Party Invitation Check using name
+- Party Invitation check using username and password
+- manual throw 
+

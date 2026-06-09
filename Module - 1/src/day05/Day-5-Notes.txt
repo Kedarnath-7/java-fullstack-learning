@@ -1,0 +1,20 @@
+Array
+- int, short, byte, String, char, float, double, Integer
+
+Comparable, Comparator, inner class, local class, local anonymous class
+- Person: Sort 
+- Product: Sort
+- party Invitation check given an array of users names and using custom exception handling
+- Reverse Array of elements
+- swap two values of array given indexes by user input
+- DOB as String parsing and sorting
+
+
+Collection
+- List: methods{add(), remove, set(), .sort(com)}, Integer, String, Persons, Animals
+- Queue: same as above
+- Set: same as above
+- Priority queue: Methods and sorting using
+
+- Persons sorting: List, queue, priority queue, set
+- Product sorting: List, queue, priority queue, set 

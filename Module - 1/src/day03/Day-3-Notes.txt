@@ -1,0 +1,66 @@
+Day 3 Notes
+
+Topics practiced:
+- Association in Java objects
+- Aggregation
+- Composition
+- Polymorphism basics
+- Method overloading
+- Runtime polymorphism with parent references
+- Upcasting and downcasting
+- String operations
+- Object-based practice exercises
+
+Main practice areas:
+- Person and Passport relationships
+- Address and person relationships
+- Car and engine style composition examples
+- Calculator overloads for byte, short, int, long, float, double, Integer, and String
+- Parent and child class examples
+- Bank account and related object behavior
+
+
+
+Polymorphism
+- Calculator
+- Greeting
+- Person: Student, Employee
+
+
+Object Operations - .equals(),.hashCode(), .toString(),
+		    .getClass().getSimpleName()
+- Person
+- Student
+
+
+Strings - string class methods & custom methods
+- ReverseString
+- Palindrome Checker
+- Count Vowels in a string
+- Count Spaces in a string
+
+
+Association
+- PassportHasPerson
+- Person
+- PersonHasPassport
+- Passport
+
+Aggregation
+- Person
+- Address
+
+Composition
+- Car
+- Engine
+- AirConditioner
+- MusicSystem
+
+Weekly Assignments
+- FinanceTracker
+- FuelTracker
+- RechargeTracker
+
+
+
+
