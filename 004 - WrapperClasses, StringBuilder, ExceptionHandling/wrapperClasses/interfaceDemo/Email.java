@@ -1,7 +1,0 @@
-package wrapperClasses.interfaceDemo;
-
-public class Email {
-    void sendMessage() {
-        System.out.println("Sending your message through Email..");
-    }
-}
