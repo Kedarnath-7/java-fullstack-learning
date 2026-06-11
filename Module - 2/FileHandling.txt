@@ -1,0 +1,6 @@
+Hello, this is Kedarnath.
+I am currently learning File handling in java.
+So I am creating this file for using it as a .txt file to complete a task.
+The task is to copy a text from a .txt file and to a new .txt file using reader and writer.
+So I am first creating this text file which I will use for completing the task.
+I will be doing the task using Reader, BufferedReader, Writer and BufferedWriter.

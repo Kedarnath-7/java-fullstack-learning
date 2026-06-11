@@ -1,6 +1,8 @@
-package day01.daoArchitecture.dao;
+package day02.streams.dao;
 
-import day01.daoArchitecture.entity.Book;
+import day02.streams.entity.Book;
+
+import java.util.List;
 
 public interface BookDao {
     public void save(Book book);
@@ -14,4 +16,7 @@ public interface BookDao {
     public Iterable<Book> sortByTitleAsc();
     public Iterable<Book> sortByTitleDesc();
     public Iterable<Book> findAllByAuthor(String author);
+
+    public List<Book> sortByTitle();
+    public List<Book> sortByAuthor();
 }

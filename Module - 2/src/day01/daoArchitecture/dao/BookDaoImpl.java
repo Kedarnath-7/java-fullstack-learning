@@ -1,7 +1,7 @@
-package day01.daoArchitecture.entity;
+package day01.daoArchitecture.dao;
 
 
-import daoArchitecture.dao.BookDao;
+import day01.daoArchitecture.entity.Book;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -90,5 +90,17 @@ public class BookDaoImpl implements BookDao {
     @Override
     public Iterable<Book> sortByTitleDesc() {
         return null;
+    }
+
+    @Override
+    public Iterable<Book> findAllByAuthor(String author) {
+        List<Book> result = new  ArrayList<>();
+        for(Book b: books){
+            if(b.getAuthor().equalsIgnoreCase(author)){
+                result.add(b);
+            }
+        }
+        return result;
+
     }
 }

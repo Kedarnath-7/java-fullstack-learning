@@ -1,9 +1,6 @@
 package day01.functional;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
 
 public class MainFunction {
     public static void main(String[] args) {
@@ -22,15 +19,20 @@ public class MainFunction {
             return false;
         };
 
-        //Uniary Operator
+        //Unary Operator
         // <T> identity()
         UnaryOperator<String> unaryOperator = (s)->s;
 
 
         //Binary Operator
+        BinaryOperator<Integer> binaryOperator = (a,b)->a+b;
 
         //Consumer
+        Consumer<String> consumer = (s)->{
+            System.out.println(s);
+        };
 
         //Supplier
+        Supplier<String> supplier = ()->"Hello";
     }
 }
