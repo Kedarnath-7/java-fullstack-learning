@@ -1,6 +1,4 @@
 package day02.fileHandling;
-
-
 import java.io.*;
 
 public class FileCopyDemo {
