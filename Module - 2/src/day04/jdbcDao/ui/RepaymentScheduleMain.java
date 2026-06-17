@@ -10,8 +10,6 @@ public class RepaymentScheduleMain {
 
         RepaymentScheduleDaoImpl repaymentScheduleDao = new RepaymentScheduleDaoImpl();
 
-        repaymentScheduleDao.saveSchedule();
-        repaymentScheduleDao.findAllSchedules();
 
     }
 }

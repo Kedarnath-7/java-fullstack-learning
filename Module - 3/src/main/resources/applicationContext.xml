@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="credit" class="com.northernArc.springIntro.xmlSpringConfiguration.CreditCard"></bean>
+    <bean id="debit" class="com.northernArc.springIntro.xmlSpringConfiguration.DebitCard"></bean>
+    <bean id="upi" class="com.northernArc.springIntro.xmlSpringConfiguration.Upi"></bean>
+
+    <bean id="email" class="com.northernArc.springIntro.xmlSpringConfiguration.Email"></bean>
+    <bean id="text" class="com.northernArc.springIntro.xmlSpringConfiguration.Text"></bean>
+    <bean id="whatsapp" class="com.northernArc.springIntro.xmlSpringConfiguration.WhatsApp"></bean>
+
+<!--    constructor injection-->
+    <bean id="expenseManagerConstructor" class="com.northernArc.springIntro.xmlSpringConfiguration.ExpenseManager">
+        <constructor-arg ref="credit"></constructor-arg>
+        <constructor-arg ref="email"></constructor-arg>
+    </bean>
+
+<!--    setter injection-->
+    <bean id="expenseManagerSetter" class="com.northernArc.springIntro.xmlSpringConfiguration.ExpenseManager">
+        <property name="paymentService" ref="upi"/>
+        <property name="notificationService" ref="email"/>
+    </bean>
+
+</beans>
