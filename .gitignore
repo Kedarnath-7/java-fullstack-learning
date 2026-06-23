@@ -14,8 +14,43 @@
 *.iml
 .junie/
 
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+.kotlin
+
+*.iws
+*.iml
+*.ipr
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+
 # Build output
 out/
+test/
+!*\test\java\service\LibraryAnalyticsTest.java
 
 # Logs
 *.log
@@ -23,3 +58,10 @@ out/
 # OS files
 .DS_Store
 Thumbs.db
+
+*\.gitignore
+*\.gitattributes
+
+.mvn/
+*\mvnw
+*\mvnw.cmd

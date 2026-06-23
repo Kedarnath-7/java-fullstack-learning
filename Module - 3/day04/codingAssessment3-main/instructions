@@ -1,0 +1,259 @@
+Time: 2 hours
+Max Marks:200
+Real-Time Digital Library Analytics Engine
+Topics Tested:
+•	Collections Framework
+•	Generics
+•	Comparable vs Comparator
+•	HashMap / TreeMap / LinkedHashMap
+•	TreeSet / PriorityQueue
+•	Stream API
+•	Custom Collectors
+•	String Manipulation
+•	Immutable Objects
+•	Functional Programming
+•	Data Structures Design
+________________________________________
+Problem Statement
+A digital library receives millions of book transactions daily.
+Each transaction is represented as:
+BOOK_ID|TITLE|AUTHOR|CATEGORY|BORROW_COUNT|RATING
+Example:
+B101|Clean Code|Robert Martin|Programming|145|4.8
+B102|Effective Java|Joshua Bloch|Programming|180|4.9
+B103|Atomic Habits|James Clear|SelfHelp|200|4.7
+The system should maintain books efficiently and support complex analytical queries.
+Unfortunately the implementation is incomplete.
+Participants must complete the missing code.________________________________________
+Provided Classes
+________________________________________
+Book.java
+public final class Book {
+    private final String bookId;
+    private final String title;
+    private final String author;
+    private final String category;
+    private final int borrowCount;
+    private final double rating;
+
+    public Book(String bookId,
+                String title,
+                String author,
+                String category,
+                int borrowCount,
+                double rating) {
+
+        this.bookId = bookId;
+        this.title = title;
+        this.author = author;
+        this.category = category;
+        this.borrowCount = borrowCount;
+        this.rating = rating;
+    }
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public int getBorrowCount() {
+        return borrowCount;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+}
+
+________________________________________
+
+LibraryAnalytics.java
+import java.util.*;
+
+public class LibraryAnalytics {
+
+    private Map<String, Book> books = new HashMap<>();
+
+    public void loadBooks(List<String> records) {
+
+        // COMPLETE
+    }
+
+    public List<Book> topRatedBooks(int n) {
+
+        // COMPLETE
+        return null;
+    }
+
+    public Map<String, Double> averageRatingByCategory() {
+
+        // COMPLETE
+        return null;
+    }
+
+    public Optional<Book> mostBorrowedBook() {
+
+        // COMPLETE
+        return Optional.empty();
+    }
+
+    public Set<String> authorsWithMultipleCategories() {
+
+        // COMPLETE
+        return null;
+    }
+
+    public Map<String,List<Book>> groupBooksByAuthor() {
+
+        // COMPLETE
+        return null;
+    }
+
+    public List<String> suspiciousBooks() {
+
+        // COMPLETE
+        return null;
+    }
+}
+________________________________________Business Rules
+________________________________________
+Rule 1(marks:5)
+While loading(adding records to map) records:
+BOOK_ID must be unique.
+If duplicate BOOK_ID found:
+Keep only the record having:
+Higher Rating
+
+If ratings equal:
+Higher Borrow Count
+
+If both equal:
+Lexicographically smaller Title
+________________________________________
+Rule 2(marks:5)
+Ignore records if:
+Rating < 0
+Rating > 5
+or
+BorrowCount < 0
+or
+Any field empty
+________________________________________
+
+Rule 3(marks:20)
+topRatedBooks(n)
+Sort by:
+Rating DESC
+If rating is same then
+Borrow Count DESC
+If borrow count same then
+Title ASC
+Return first n books.
+________________________________________
+Rule 4(marks:20)
+averageRatingByCategory()
+Return:
+TreeMap
+sorted alphabetically by category.
+Average rounded to:
+2 decimal places
+________________________________________
+Rule 5(marks:20)
+mostBorrowedBook()
+Return book with:
+Highest borrow count
+
+If tie:
+Highest rating
+
+If tie:
+Smallest bookId
+________________________________________
+Rule 6(marks:10)
+authorsWithMultipleCategories()
+Return authors who have books in more than one category.
+Output must be:
+TreeSet
+________________________________________
+Rule 7(marks:20)
+groupBooksByAuthor()
+Return:
+LinkedHashMap
+ordered by:
+Author Name ASC
+Within each list:
+Rating DESC
+Borrow Count DESC
+________________________________________
+Rule 8(Marks: 40)
+Implement:
+suspiciousBooks()
+A book is suspicious if ANY condition is true.
+________________________________________
+Condition 1
+Title contains repeated consecutive word.
+Example:
+Java Java Mastery
+Clean Clean Code
+________________________________________
+Condition 2
+Author name appears in title.
+Example:
+James Clear Habits
+Robert Martin Guide
+________________________________________
+Condition 3
+Borrow count greater than average borrow count of category by 300%.
+Example:
+Category Average:
+100
+Book Borrow:
+301
+Suspicious
+
+---
+
+Condition 4
+
+Rating is below category average but borrow count is above category average.
+
+---
+
+Return:
+
+```java
+Distinct Titles
+
+Sorted alphabetically
+
+No loops allowed
+Must use:
+Streams only
+________________________________________
+
+Final Challenge(Marks: 60)
+Without modifying existing methods, implement:
+public Map<String, Map<String,Book>>  categoryWiseTopRatedBookByEachAuthor()
+Output:
+Programming
+    Joshua Bloch -> Effective Java
+
+Programming
+    Robert Martin -> Clean Code
+Using streams api.
+
+
+
+Important note:
+Please note that successfully completing the coding assessment alone will not be considered sufficient. Participants must be able to clearly explain the complete execution flow of their Java code, justify the logic behind their implementation, and answer follow-up questions related to their solution. Additionally, they should be capable of recreating the code independently using pen and paper, without referring to the submitted solution, thereby demonstrating a thorough understanding of the concepts, logic, and implementation details.
