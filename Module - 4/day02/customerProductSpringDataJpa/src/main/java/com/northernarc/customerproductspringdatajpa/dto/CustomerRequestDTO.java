@@ -1,0 +1,23 @@
+package com.northernarc.customerproductspringdatajpa.dto;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+public class CustomerRequestDTO {
+
+    @NotBlank(message = "First name is required")
+    private String fName;
+    @NotBlank(message = "Last name is required")
+    private String lName;
+    @Email(message = "Email should be valid")
+    private String email;
+
+}
+
