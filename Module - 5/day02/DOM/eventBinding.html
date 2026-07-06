@@ -1,0 +1,25 @@
+<html>
+    <head> <title> Event Binding </title></head>
+    <body>
+        <button onClick="changeBgColor()" onmouseover="hover()" onmousedown="out()">
+            Toggle Bg Color
+        </button>
+        <h1>
+            This is a heading
+        </h1>
+
+        <script>
+            function changeBgColor(){
+                document.body.style.backgroundColor="blue";
+            }
+            function hover(){
+                document.getElementsByTagName("h1")[0].style.backgroundColor="blue";
+            }
+            function out(){
+                document.getElementsByTagName("h1")[0].style.backgroundColor="white";
+            }
+        </script>
+
+
+    </body>
+</html>

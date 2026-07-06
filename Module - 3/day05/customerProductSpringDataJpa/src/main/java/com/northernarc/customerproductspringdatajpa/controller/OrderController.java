@@ -33,18 +33,18 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Order> getById(@PathVariable Long id) {
+    public ResponseEntity<OrderResponseDTO> getById(@PathVariable Long id) {
         return ResponseEntity.ok(orderService.findById(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<Order>> getAll() {
+    public ResponseEntity<List<OrderResponseDTO>> getAll() {
         return ResponseEntity.ok(orderService.findAllOrders());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Order> update(@PathVariable Long id,
-                                        @RequestBody Order order) {
+    public ResponseEntity<OrderResponseDTO> update(@PathVariable Long id,
+                                        @RequestBody OrderRequestDTO order) {
         orderService.updateById(id, order);
         return ResponseEntity.ok(orderService.findById(id));
     }
@@ -58,7 +58,6 @@ public class OrderController {
 
     @PutMapping("/{id}/cancel")
     public ResponseEntity<String> cancelOrder(@PathVariable Long id) {
-        Order order = orderService.findById(id);
         orderService.deleteById(id);
 
         return ResponseEntity.ok("Order cancelled successfully");

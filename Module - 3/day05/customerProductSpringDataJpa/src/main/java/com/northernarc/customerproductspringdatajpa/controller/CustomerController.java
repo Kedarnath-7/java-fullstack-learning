@@ -1,5 +1,7 @@
 package com.northernarc.customerproductspringdatajpa.controller;
 
+import com.northernarc.customerproductspringdatajpa.dto.CustomerRequestDTO;
+import com.northernarc.customerproductspringdatajpa.dto.CustomerResponseDTO;
 import com.northernarc.customerproductspringdatajpa.model.Customer;
 import com.northernarc.customerproductspringdatajpa.service.CustomerService;
 import org.springframework.http.HttpStatus;
@@ -19,23 +21,23 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<CustomerResponseDTO> addCustomer(@RequestBody CustomerRequestDTO customer) {
         return new ResponseEntity<>(customerService.addCustomer(customer), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getById(@PathVariable Long id) {
+    public ResponseEntity<CustomerResponseDTO> getById(@PathVariable Long id) {
         return ResponseEntity.ok(customerService.findById(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<Customer>> getAll() {
+    public ResponseEntity<List<CustomerResponseDTO>> getAll() {
         return ResponseEntity.ok(customerService.findAllCustomers());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> update(@PathVariable Long id,
-                                           @RequestBody Customer customer) {
+    public ResponseEntity<CustomerResponseDTO> update(@PathVariable Long id,
+                                           @RequestBody CustomerRequestDTO customer) {
         customerService.updateById(id, customer);
         return ResponseEntity.ok(customerService.findById(id));
     }

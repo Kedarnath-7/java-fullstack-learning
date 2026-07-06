@@ -1,0 +1,151 @@
+<html>
+    <head><title>Property binding</title>
+    <style>
+        button{
+            background: #007bff;
+            color: white;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+
+        input{
+            background: white;
+            font-size: 18px;
+            border-radius: 8px;;
+        }
+
+        button:hover{
+            background: #0056b3;
+        }
+
+        ol li{
+            font-size: 18px;
+            border-radius: 6px;
+        }
+
+        table, th, td{
+            border: 2px solid black;
+        }
+
+    </style>
+    </head>
+    <body>
+
+        <button onClick="showInnerHtml()"> Show Best XII </button>
+        <button onClick="sortByFirstName()"> Sort by First Name </button>
+        <button onClick="sortByLastName()"> Sort by Last Name</button>
+        <input id="addPlayer" type="text" placeholder="Enter player full name">
+        <button onClick="addPlayer()"> Add Player </button>
+        <div id="content">  </div>
+        
+
+        <script>
+            var data = ["Sanju Samson", "Ayush Mahtre", "Urvil Patel", "Ruturaj Gaikwad", "Dewald Brevis", "Shivam Dube", "MS Dhoni", "Anshul Kamboj", "Noor Ahmed", "Nathan Ellis", "Kahleel Ahmed", "Akeal Hosein"];
+
+            function showInnerHtml(){
+                // const content = `<ol>
+                //     ${data
+                // .map(name => `<li>${name.toUpperCase()}</li>`)
+                // .reduce((html, item) => html + item, "")}
+                // </ol>`;
+
+                
+                const rows = data.map(name => {
+                        const parts = name.split(" ");
+                        const firstName = parts[0];
+                        const lastName = parts.slice(1).join(" ");
+
+                        return `
+                            <tr>
+                                <td>${firstName}</td>
+                                <td>${lastName}</td>
+                                <td><button onClick="removeByName('${name}')">Remove</button></td>
+                                <td><button onClick="updatePlayer('${name}')"> Update</button></td>
+                            </tr>
+                        `;
+                }).join("");
+
+                const content = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rows}
+                        </tbody>
+                    </table>
+                `;
+                    
+                    document.getElementById("content").innerHTML=content;
+            }
+
+            function sortByFirstName(){
+                data.sort();
+                showInnerHtml();
+            }
+
+            function sortByLastName(){
+                data.sort((a,b)=>{
+                    const lastNameA = a.split(" ").slice(1).join(" ");
+                    const lastNameB = b.split(" ").slice(1).join(" ");
+
+                    return lastNameA.localeCompare(lastNameB);
+                }
+            );
+                showInnerHtml();
+            }
+
+            function removeByName(removeName){
+                data = data.filter(name=> name !== removeName);
+                showInnerHtml();
+            }
+
+            function addPlayer(){
+                let newPlayer = document.getElementById("addPlayer").value;
+                data.push(newPlayer);
+                // data.unshift(newPlayer); --for adding at first
+                showInnerHtml();
+            }
+
+            function updatePlayer(name){
+                const updatedName = prompt("Enter updated player name:", name);
+
+                if (updatedName === null || updatedName.trim() === "") {
+                    return;
+                }
+
+                const index = data.indexOf(name);
+
+                if (index !== -1) {
+                    data[index] = updatedName.trim();
+                }
+
+                showInnerHtml();
+            }
+
+            window.onload = function() {
+                getAll();
+            };
+
+            function getAll() {
+                fetch("http://localhost:8080/api/employees")
+                .then((response)=>{
+                return response.json();
+                })
+                .then(data =>{
+                console.log(data);
+                names= data;
+                showInnerHtml();
+                })
+                .catch(err=>{
+                console.log("There was some problem in contacting the server: "+err)
+                });
+            }
+
+
+        </script>
+    </body>
+</html>

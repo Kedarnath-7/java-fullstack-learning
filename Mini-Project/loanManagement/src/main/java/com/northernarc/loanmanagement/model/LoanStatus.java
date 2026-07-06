@@ -2,7 +2,8 @@ package com.northernarc.loanmanagement.model;
 
 public enum LoanStatus {
     PENDING,
-    APPROVED,
+    ACTIVE,
     REJECTED,
-    CLOSED
+    CLOSED,
+    OVERDUE
 }

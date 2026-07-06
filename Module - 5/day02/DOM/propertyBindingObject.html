@@ -1,0 +1,21 @@
+<html>
+    <head><title>Property binding</title></head>
+    <body>
+
+        <button onClick="showInnerText()" ondblclick="showInnerHtml()"> Click here </button>
+        <div id="content">  </div>
+        <script>
+            var data = {fName:"Thala", lName:"Dhoni"}
+            function showInnerText(){
+
+                let content = document.getElementById("content");
+                content.innerText=`${data.fName} ${data.lName} is the greatest captain of all time..`;
+            }
+
+            function showInnerHtml(){
+                let content = document.getElementById("content");
+                content.innerHTML=`<h2>${data.fName} ${data.lName} is also the greatest wicker keeper the game has ever seen...</h2>`;
+            }
+        </script>
+    </body>
+</html>

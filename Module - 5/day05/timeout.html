@@ -1,0 +1,14 @@
+<html>
+    <head><title>Timeout Example</title></head>
+    <body>
+        <div id="message"></div>
+
+        <script>
+            document.getElementById("message").innerHTML = `<h1>Starting...</h1>`;
+            setTimeout(() => {
+                document.getElementById("message").innerHTML = `<h1> This message is displayed after 2 seconds</h1>`;
+            }, 2000);
+            document.getElementById("message").innerHTML += `<h1>End</h1>`;
+        </script>
+    </body>
+</html>

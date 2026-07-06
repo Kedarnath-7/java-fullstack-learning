@@ -1,0 +1,27 @@
+<html>
+    <head><title>Timeout Example</title></head>
+    <body>
+        <button onclick="myPromise()" style="font-size: 24px;">Click Here to start async programming</button>
+
+        <div id="message"></div>
+
+        <script>
+            function demo(){
+                console.log("Start");
+                setTimeout(() => {
+                    console.log("This message is displayed after 2 seconds");
+                }, 2000);
+                console.log("End");
+            }
+
+            // Promise Example
+            function myPromise(){
+                document.getElementById("message").innerHTML = `<h1>Starting...</h1>`;
+                setTimeout(() => {
+                    document.getElementById("message").innerHTML = `<h1> This message is displayed after random time</h1>`; 
+                }, Math.floor(Math.random() * 5000)); 
+                //document.getElementById("message").innerHTML += `<h1>End</h1>`;
+            }
+        </script>
+    </body>
+</html>

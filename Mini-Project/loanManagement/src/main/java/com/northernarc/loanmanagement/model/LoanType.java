@@ -1,10 +1,9 @@
 package com.northernarc.loanmanagement.model;
 
-public enum LoanType{
+public enum LoanType {
     PERSONAL,
     HOME,
-    GOLD,
+    VEHICLE,
     EDUCATION,
-    BUSINESS,
-    VEHICLE
+    BUSINESS
 }

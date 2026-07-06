@@ -1,0 +1,16 @@
+<html>
+    <head><title>Interval Example</title></head>
+    <body>
+        <div id="message"></div>
+        <script>
+            let count = 0;
+            const intervalId = setInterval(() => {
+                document.getElementById("message").innerHTML = `Count: ${count}`;
+                count++;
+                if (count > 5) {
+                    clearInterval(intervalId);
+                }
+            }, 1000);
+        </script>
+    </body>
+</html>

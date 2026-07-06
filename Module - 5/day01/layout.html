@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layouting</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar {
+            background-color: #fff;
+            padding: 18px 0;
+        }
+
+        .navbar-brand img {
+            height: 70px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #111;
+            font-weight: bold;
+            font-size: 20px;
+            text-transform: uppercase;
+            margin-left: 20px;
+            transition: .3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #1dc8f2;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .page-title {
+            color: rgb(18, 225, 240);
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .service-card{
+            border:none;
+            border-radius:0;
+            overflow:hidden;
+            box-shadow:0 8px 25px rgba(0,0,0,.12);
+            transition:.3s;
+        }
+
+        .service-card:hover{
+            transform:translateY(-8px);
+            box-shadow:0 15px 35px rgba(0,0,0,.18);
+        }
+
+        .service-card img{
+            height:220px;
+            object-fit:cover;
+        }
+
+        .service-card .card-body{
+            padding:2rem;
+        }
+
+        .service-card .card-title{
+            font-size:2rem;
+            line-height:1.2;
+        }
+
+        .service-card .card-text{
+            font-size:1.35rem;
+            line-height:1.6;
+            color:#333;
+        }
+
+        .know-more{
+            text-decoration:none;
+            color:#222;
+            font-size:1.3rem;
+            font-weight:500;
+        }
+
+        .know-more:hover{
+            color:#1dc8f2;
+        }
+
+        footer {
+            background: #0b5d74;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer h3,
+        footer h5 {
+            margin: 5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg shadow-sm">
+        <div class="container">
+
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="Logo">
+            </a>
+
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            Who We Are
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">
+                            What We Do
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="partners.html">
+                            Investors
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Media Centre
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            Reach Us
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1 class="page-title">
+            Tapping credit opportunities in India’s emerging sectors
+        </h1>
+
+        <div class="content-box">
+
+            <p>
+                Access to credit has a transformative power to drive positive change and empower individuals and businesses in underserved communities. It is not just a financial tool; it's a catalyst for growth, innovation, and the realization of dreams. At Northern Arc, our mission is to cater to the diverse retail credit requirements of the under-served households and businesses.
+            </p>
+            <p>
+                Over the last 15 years, we have created a differentiated and comprehensive play on the retail credit ecosystem in India and have developed domain expertise in enabling credit across our six focused sectors- MSME financing, Microfinance, Consumer Finance, vehicle finance (commercial vehicle, two-wheeler and EV finance), affordable housing finance and Agriculture finance.
+            </p>
+            <p>
+                In addition, we are focused on the climate and renewable financing sector. Our business is supported by our proprietary end-to-end integrated technology product suite customised to multiple sectors.
+            </p>
+
+        </div>
+        <section class="my-5">
+            <div class="row g-4">
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card service-card h-100">
+                        <img src="logo.png" class="card-img-top" alt="Mid Market Corporate Lending">
+
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title fw-bold">
+                                Mid Market Corporate Lending
+                            </h3>
+
+                            <p class="card-text mt-4">
+                                Our customized financing solutions for the MSME segment empower businesses to reach their potential.
+                            </p>
+
+                            <a href="#" class="know-more mt-auto">
+                                Know More &nbsp; &#9654;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card service-card h-100">
+                        <img src="logo.png" class="card-img-top" alt="Supply Chain Finance">
+
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title fw-bold">
+                                Supply Chain Finance
+                            </h3>
+
+                            <p class="card-text mt-4">
+                                Our technology driven Supply Chain financing provides customized credit solutions to vendors, dealers, suppliers and other businesses.
+                            </p>
+
+                            <a href="#" class="know-more mt-auto">
+                                Know More &nbsp; &#9654;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card service-card h-100">
+                        <img src="logo.png" class="card-img-top" alt="Loan Against Property">
+
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title fw-bold">
+                                Loan Against Property
+                            </h3>
+
+                            <p class="card-text mt-4">
+                                Unlock the value of your house, shop or factory through our small business loans.
+                            </p>
+
+                            <a href="#" class="know-more mt-auto">
+                                Know More &nbsp; &#9654;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card service-card h-100">
+                        <img src="logo.png" class="card-img-top" alt="Altifi">
+
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title fw-bold">
+                                Altifi
+                            </h3>
+
+                            <p class="card-text mt-4">
+                                Get access to investment grade bonds and grow your wealth by earning returns of upto 14% XIRR.
+                            </p>
+
+                            <a href="#" class="know-more mt-auto">
+                                Know More &nbsp; &#9654;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <h3>Northern Arc Capital Limited</h3>
+        <h5>Customer support: 0001 0002 003</h5>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

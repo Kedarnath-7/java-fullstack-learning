@@ -34,7 +34,7 @@ public class Product {
     private int stock;
 
     @OneToMany
-    private OrderItem orderItem;
+    private List<OrderItem> orderItem;
 
 
 }

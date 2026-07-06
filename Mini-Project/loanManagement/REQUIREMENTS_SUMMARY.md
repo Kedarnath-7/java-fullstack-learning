@@ -234,6 +234,9 @@ Return proper HTTP status codes and error messages
 ### Dashboard
 - `GET /dashboard` - Analytics dashboard
 
+### API Documentation
+- Swagger/OpenAPI available at `/swagger-ui.html` or `/v3/api-docs`
+
 ---
 
 ## Repository Methods Required
@@ -309,8 +312,23 @@ Return proper HTTP status codes and error messages
 1. JwtFilter (before UsernamePasswordAuthenticationFilter)
 2. Authentication validation
 3. SecurityContext population
-
+4. Role-based access control
+5. Exception handling for unauthorized access
+6. Duplicate email or invalid credentials handling
 ---
+
+### Use Cases to be Implemented
+1. **Customer Management**: Create, Read, Update, Delete (CRUD) operations for customers.
+2. **Loan Product Management**: CRUD operations for loan products, including filtering by type and penalty rates.
+3. **Loan Account Management**: CRUD operations for loan accounts, including closing loans and viewing loan details.
+4. **EMI Payment Processing**: Record EMI payments, including penalty calculations and payment type handling.
+5. **Penalty Rate Management**: Update daily penalty rates for specific loan products, with role-based access control.
+6. **Dashboard Analytics**: Provide aggregated data for total customers, loans, loan amounts, penalties, top branches, and highest loan customers.
+7. **Authentication & Authorization**: Implement JWT-based authentication and role-based authorization for secure access to endpoints.
+8. **Exception Handling**: Implement global exception handling for validation errors, resource not found, and unauthorized access.
+9. **API Documentation**: Provide Swagger/OpenAPI documentation for all endpoints, including request/response models and authentication requirements.
+10. **Testing & Validation**: Ensure all endpoints are covered by unit and integration tests, with proper validation and error handling.
+in summary - customer can apply for loan & can see the details of the loan, underwriter find all loan application & can approve/reject loanapplicantion, manager can see the dashboard & can update the penalty rates, admin can delete loan products & loan accounts.
 
 ## Technologies & Dependencies
 
@@ -322,7 +340,7 @@ Return proper HTTP status codes and error messages
 - **JWT**: Token-based authentication
 - **Jakarta Bean Validation**: Input validation
 - **Lombok**: Reduce boilerplate code
-
+- **Swagger/OpenAPI**: API documentation
 ---
 
 ## Project Structure

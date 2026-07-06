@@ -1,5 +1,7 @@
 package com.northernarc.customerproductspringdatajpa.service;
 
+import com.northernarc.customerproductspringdatajpa.dto.ProductRequestDTO;
+import com.northernarc.customerproductspringdatajpa.dto.ProductResponseDTO;
 import com.northernarc.customerproductspringdatajpa.exceptions.ProductNotFound;
 import com.northernarc.customerproductspringdatajpa.model.Product;
 import com.northernarc.customerproductspringdatajpa.repository.ProductRepository;
@@ -14,18 +16,28 @@ public class ProductServiceImpl implements ProductService{
         this.productRepository = productRepository;
     }
     @Override
-    public Product addProduct(Product product) {
-        return productRepository.save(product);
+    public ProductResponseDTO addProduct(ProductRequestDTO product) {
+        Product product1 = new Product();
+        product1.setName(product.getName());
+        product1.setBrand(product.getBrand());
+        product1.setCategory(product.getCategory());
+        product1.setCost(product.getCost());
+        product1.setStock(product.getStock());
+        return mapToResponse(productRepository.save(product1));
     }
 
     @Override
-    public Product findById(Long id) {
-        return productRepository.findById(id).orElseThrow(()->new ProductNotFound("no product found..."));
+    public ProductResponseDTO findById(Long id) {
+        return productRepository.findById(id).map((product -> mapToResponse(product))).orElseThrow(()->new ProductNotFound("no product found..."));
     }
 
     @Override
-    public List<Product> findAllProducts() {
-        return productRepository.findAll();
+    public List<ProductResponseDTO> findAllProducts() {
+        return productRepository.findAll().stream().map((product)-> mapToResponse(product)).toList();
+    }
+
+    private ProductResponseDTO mapToResponse(Product product){
+        return new ProductResponseDTO(product.getProduct_id(), product.getName(), product.getBrand(), product.getCategory(), product.getCost(), product.getStock());
     }
 
     @Override
@@ -39,7 +51,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void updateById(Long id, Product product) {
+    public void updateById(Long id, ProductRequestDTO product) {
         Product product1 = productRepository.findById(id).orElseThrow(()->new ProductNotFound("no product found..."));
         product1.setName(product.getName());
         product1.setBrand(product.getBrand());
@@ -50,7 +62,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<Product> searchProducts(String name, String brand, String category) {
+    public List<ProductResponseDTO> searchProducts(String name, String brand, String category) {
 
         if (name != null) {
             return productRepository.findByNameContainingIgnoreCase(name);
@@ -64,6 +76,6 @@ public class ProductServiceImpl implements ProductService{
             return productRepository.findByCategoryContainingIgnoreCase(category);
         }
 
-        return productRepository.findAll();
+        return productRepository.findAll().stream().map((product) -> mapToResponse(product)).toList();
     }
 }

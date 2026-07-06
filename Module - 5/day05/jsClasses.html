@@ -1,0 +1,68 @@
+<html>
+    <head><title>JavaScript Classes</title></head>
+
+    <body>
+        <script>
+            class Animal{
+                constructor(name){
+                    this.name = name;
+                }    
+                speak(){
+                    console.log(`${this.name} makes a noise.`);
+                }
+            }
+
+            class Dog extends Animal{
+                speak(){
+                    console.log(`${this.name} barks.`);
+                }
+            }
+
+            const dog = new Dog("Buddy");
+            dog.speak(); 
+
+            var globalVar = "I am a global variable";
+            function testScope() {
+                // localVar = "I am a local variable"; // This will create a global variable if not declared with var, let, or const
+                var localVar = "I am a local variable";
+                console.log(globalVar); // Accessible
+                console.log(localVar);  // Accessible
+            }
+            testScope();
+            alert(globalVar); // Accessible
+            // alert(localVar); // Uncaught ReferenceError: localVar is not defined
+
+
+            // destructing
+            var obj = {fName: "MS", lName: "Dhoni", age: 43};
+            var {fName, lName} = obj;
+            console.log(fName, lName);
+
+
+            // structing
+            let name = "Dhoni";
+            let age = 43;
+            let role = "WK-Batsman";
+            let player = {name, age, role};
+            console.log(player);
+
+
+            // spread operator
+            let arr1 = [1, 2, 3];
+            let arr2 = [4, 5, 6];
+            let combinedArr = [...arr1, ...arr2];
+            console.log(combinedArr);
+
+
+            var arr = [1, 2, 3, 4, 5];
+            var arr3 = [...arr];
+            console.log(arr);
+            console.log("Arr3:", arr3);
+            arr3[0] = 100;
+            console.log(arr3);
+            console.log(arr);
+
+            
+        </script>
+    </body>
+</html>

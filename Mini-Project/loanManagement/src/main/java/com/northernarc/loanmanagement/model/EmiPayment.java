@@ -1,10 +1,15 @@
 package com.northernarc.loanmanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 
 @Entity
@@ -21,7 +26,7 @@ public class EmiPayment {
     private Double amountPaid;
 
     @NotNull(message = "Penalty paid cannot be null")
-    @PositiveOrZero(message = "Penalty paid must be positive")
+    @PositiveOrZero(message = "Penalty paid must be positive or zero")
     private Double penaltyPaid;
 
     @Enumerated(EnumType.STRING)
@@ -34,5 +39,6 @@ public class EmiPayment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "loan_account_id")
+    @JsonIgnore
     private LoanAccount loanAccount;
 }

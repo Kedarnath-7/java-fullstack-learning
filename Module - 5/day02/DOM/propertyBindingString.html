@@ -1,0 +1,19 @@
+<html>
+    <head><title>Property binding</title></head>
+    <body>
+
+        <button onClick="showInnerText()" ondblclick="showInnerHtml()"> Click here </button>
+        <div id="content">  </div>
+        <script>
+            function showInnerText(){
+                let content = document.getElementById("content");
+                content.innerText="Hello this is using inner text";
+            }
+
+            function showInnerHtml(){
+                let content = document.getElementById("content");
+                content.innerHTML="<h2> This is using inner html</h2>";
+            }
+        </script>
+    </body>
+</html>

@@ -1,11 +1,12 @@
 package com.northernarc.customerproductspringdatajpa.service;
 
-import com.northernarc.customerproductspringdatajpa.dto.OrderItemSummaryDTO;
-import com.northernarc.customerproductspringdatajpa.dto.OrderRequestDTO;
-import com.northernarc.customerproductspringdatajpa.dto.OrderResponseDTO;
+import com.northernarc.customerproductspringdatajpa.dto.*;
 import com.northernarc.customerproductspringdatajpa.exceptions.CustomerNotFound;
 import com.northernarc.customerproductspringdatajpa.exceptions.OrderNotFound;
+import com.northernarc.customerproductspringdatajpa.exceptions.ProductNotFound;
+import com.northernarc.customerproductspringdatajpa.model.Customer;
 import com.northernarc.customerproductspringdatajpa.model.Order;
+import com.northernarc.customerproductspringdatajpa.model.OrderItem;
 import com.northernarc.customerproductspringdatajpa.repository.CustomerRepository;
 import com.northernarc.customerproductspringdatajpa.repository.OrderRepository;
 import com.northernarc.customerproductspringdatajpa.repository.ProductRepository;
@@ -29,12 +30,23 @@ public class OrderServiceImpl implements OrderService{
         Order order1 = new Order();
         order1.setOrderDate(order.getOrderDate());
         order1.setCustomer(customerRepository.findById(order.getCustomerId()).orElseThrow(()-> new CustomerNotFound("no customer found...")));
-        order1.setOrderItemList(order.getOrderItems());
+        order1.setOrderItemList(order.getOrderItems().stream().map((orderItemRequestDTO)-> mapToOrderItem(orderItemRequestDTO)).toList());
         return mapToResponse(orderRepository.save(order1));
     }
 
+    private OrderItem mapToOrderItem(OrderItemRequestDTO orderItemRequestDTO){
+        OrderItem orderItem = new OrderItem();
+        orderItem.setQuantity(orderItemRequestDTO.getQuantity());
+        orderItem.setProduct(productRepository.findById(orderItemRequestDTO.getProductId()).orElseThrow(()->new ProductNotFound("no product found...")));
+        return orderItem;
+    }
+
     private OrderResponseDTO mapToResponse(Order order){
-        return new OrderResponseDTO(order.getOrder_id(), order.getOrderDate(), order.getCustomer()., order.getOrderItemList().stream().map((orderItem)-> new OrderItemSummaryDTO(orderItem.getId(), orderItem.getQuantity())).toList());
+        return new OrderResponseDTO(order.getOrder_id(), order.getOrderDate(), mapToCustomerSummaryDTO(order.getCustomer()), order.getOrderItemList().stream().map((orderItem)-> new OrderItemSummaryDTO(orderItem.getId(), orderItem.getQuantity())).toList());
+    }
+
+    private CustomerSummaryDTO mapToCustomerSummaryDTO(Customer customer){
+        return new CustomerSummaryDTO(customer.getId(), customer.getFName(), customer.getLName());
     }
 
     @Override
@@ -56,7 +68,7 @@ public class OrderServiceImpl implements OrderService{
     public void updateById(Long id, OrderRequestDTO order) {
         Order order1 = orderRepository.findById(id).orElseThrow(()->new OrderNotFound("no order found..."));
         order1.setOrderDate(order.getOrderDate());
-        order1.setOrderItemList(order.getOrderItems().stream().map());
+        order1.setOrderItemList(order.getOrderItems().stream().map((orderItemRequestDTO)-> mapToOrderItem(orderItemRequestDTO)).toList());
         order1.setCustomer(customerRepository.findById(order.getCustomerId()).orElseThrow(()->new CustomerNotFound("no customer found...")));
         orderRepository.save(order1);
     }

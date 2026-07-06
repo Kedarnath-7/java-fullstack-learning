@@ -1,0 +1,36 @@
+<html>
+    <head><title>Functions</title></head>
+    <body>
+        <script>
+
+            hello = ()=>{
+                alert("Hello!");
+            }
+
+            hello();
+
+            function greet(name){
+                alert("Welcome " + name);
+            }
+            greet("Bond James bond");
+
+            function add(a, b){
+                return a + b;
+            }
+
+            alert("Result: " + add(20, 10));
+
+            multiply = function(a, b){
+                return a*b;
+            }
+
+            alert("Result of multiplication: " + multiply(20, 10));
+
+            divide = (a, b)=>{
+                return a/b;
+            }
+            alert("Result of division: " + divide(20, 10));
+
+        </script>
+    </body>
+</html>
