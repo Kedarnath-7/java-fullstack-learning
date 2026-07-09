@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <div class="row">
+    @for(movie of movieService.getMovies()(); track $index){
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+
+            <p class="card-text mb-1">
+              <strong>ID:</strong> {{ movie.id }}
+            </p>
+
+            <p class="card-text mb-1">
+              <strong>Genre:</strong> {{ movie.genre }}
+            </p>
+
+            <p class="card-text">
+              <strong>Rating:</strong>
+              <span class="badge bg-primary">
+                {{ movie.rating }}
+              </span>
+            </p>
+
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="movieService.deleteMovie(movie.id)">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

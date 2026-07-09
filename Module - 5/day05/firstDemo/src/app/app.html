@@ -1,0 +1,105 @@
+<div class="container mt-4">
+  <h1>Hello, {{title}}!</h1>
+</div>
+
+<h2>
+  Your Profile
+</h2>
+<table class="table table-bordered table-striped">
+  <tbody>
+    <tr>
+      <td>First Name</td>
+      <td>{{person.fname}}</td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td>{{person.lName}}</td>
+    </tr>
+    <tr>
+      <td>Age</td>
+      <td>{{person.age}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>
+  First Avengers
+</h2>
+<div class="mb-3">
+  <input
+    class="form-control mb-2"
+    type="text"
+    [(ngModel)]="newAvenger"
+    placeholder="Enter Avenger Name">
+
+  <button class="btn btn-primary" (click)="addAvenger()">
+    Add
+  </button>
+</div>
+
+<ul class="list-group">
+  @for(avenger of avengers; track $index) {
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+
+      {{avenger}}
+
+      <div>
+        <button
+          class="btn btn-warning btn-sm me-2"
+          (click)="updateAvenger($index)">
+          Update
+        </button>
+
+        <button
+          class="btn btn-danger btn-sm"
+          (click)="removeAvenger(avenger)">
+          Remove
+        </button>
+      </div>
+
+    </li>
+  }
+</ul>
+
+
+<h3> CSK BEST XII </h3>
+<!--<button (click)="showBestXII()"> Show </button>-->
+
+<table class="table table-hover table-bordered mt-4">
+  <thead class="table-dark">
+    <tr>
+      <th>Player Name</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for(player of cskBestXII; track $index) {
+      <tr>
+        <td>{{player.name}}</td>
+        <td>{{player.role}}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+
+<table class="table table-hover table-bordered mt-4">
+  <thead>
+    <tr>
+      <th>Employee ID</th>
+      <th>Employee Name</th>
+      <th>Department</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for(employee of names(); track $index) {
+      <tr>
+        <td>{{employee.id}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.dept}}</td>
+      </tr>
+    }
+  </tbody>
+</table>

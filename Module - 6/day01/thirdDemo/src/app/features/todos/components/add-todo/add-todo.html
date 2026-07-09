@@ -1,0 +1,60 @@
+<div class="card shadow-sm mb-4">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-0">Add New Todo</h5>
+  </div>
+
+  <div class="card-body">
+    <div class="row g-3">
+
+      <div class="col-md-2">
+        <label class="form-label">ID</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="newTodo.id"
+          placeholder="ID">
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="newTodo.title"
+          placeholder="Enter title">
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="newTodo.description"
+          placeholder="Enter description">
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-check mt-4">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [(ngModel)]="newTodo.completed"
+            id="completed">
+
+          <label class="form-check-label" for="completed">
+            Completed
+          </label>
+        </div>
+      </div>
+
+      <div class="col-md-9 d-flex align-items-end justify-content-end">
+        <button
+          class="btn btn-success px-4"
+          (click)="addTodo()">
+          + Add Todo
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

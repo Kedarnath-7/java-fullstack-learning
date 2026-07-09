@@ -1,0 +1,55 @@
+<div class="card shadow-sm border-0 mb-3">
+  <div class="card-body">
+
+    <div class="d-flex justify-content-between align-items-center">
+
+      <div class="flex-grow-1">
+
+        <div class="d-flex align-items-center mb-2">
+          <h5 class="mb-0 me-3">
+            {{ todo.title }}
+          </h5>
+
+          <span
+            class="badge"
+            [class.bg-success]="todo.completed"
+            [class.bg-warning]="!todo.completed">
+
+            {{ todo.completed ? 'Completed' : 'Pending' }}
+
+          </span>
+        </div>
+
+        <p class="text-muted mb-0">
+          {{ todo.description }}
+        </p>
+
+      </div>
+
+      <div class="ms-4 text-end">
+
+        @if (!todo.completed) {
+        <button
+            class="btn btn-success btn-sm mb-2 w-100"
+            (click)="todoService.toggleTodoCompletion(todo.id)">
+            Mark Completed
+        </button>
+        } @else {
+        <button
+            class="btn btn-warning btn-sm mb-2 w-100"
+            (click)="todoService.toggleTodoCompletion(todo.id)">
+            Undo
+        </button>
+        }
+
+        <button
+          class="btn btn-danger btn-sm w-100"
+          (click)="todoService.deleteTodo(todo.id)"> Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

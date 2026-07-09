@@ -1,0 +1,15 @@
+@if (p) {
+<div class="card mb-3">
+  <div class="card-header">
+    Person Details
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ p.name }}</h5>
+    <p class="card-text">ID: {{ p.id }}</p>
+    <p class="card-text">Role: {{ p.role }}</p>
+    <p class="card-text">Age: {{ p.age }}</p>
+    <button class="btn btn-danger" (click)="onRemove.emit()">Remove</button>
+    <button class="btn btn-primary" (click)="onEdit.emit(p)">Edit</button>
+  </div>
+</div>
+}

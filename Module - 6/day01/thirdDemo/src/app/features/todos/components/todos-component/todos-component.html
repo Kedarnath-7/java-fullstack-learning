@@ -1,0 +1,6 @@
+
+<app-add-todo></app-add-todo>
+
+@for(todo of todoService.getTodos(); track todo.id){
+    <app-todo-item [todo]="todo"></app-todo-item>
+}

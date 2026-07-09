@@ -1,0 +1,12 @@
+<p> Hello from People component! </p>
+
+<app-person-form (save)="addPerson($event)"></app-person-form>
+<app-person-form
+    [person]="selectedPerson"
+    [isEditing]="isEditing"
+    (save)="savePerson($event)">
+</app-person-form>
+@for(person of people; track person.id){
+    <app-person [p]="person" (onRemove)="removePerson(person.id)" (onEdit)="editPerson($event)"></app-person>
+}
+

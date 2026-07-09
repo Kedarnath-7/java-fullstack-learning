@@ -1,0 +1,5 @@
+<app-add-flight></app-add-flight>
+@for(flight of flightService.getFlights(); track flight.id){
+    <app-flight [flight]="flight"></app-flight>
+}
+  

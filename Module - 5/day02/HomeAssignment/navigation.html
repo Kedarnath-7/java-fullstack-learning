@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Navigation Menu</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body{
+            background:#f5f7fa;
+        }
+
+        .navbar-custom{
+            background:#0d6efd;
+        }
+
+        .navbar-custom .nav-link{
+            color:white;
+            font-weight:500;
+            padding:12px 20px;
+            transition:.3s;
+            border-radius:6px;
+            cursor:pointer;
+        }
+
+        .navbar-custom .nav-link:hover{
+            background:rgba(255,255,255,.2);
+        }
+
+        .navbar-custom .nav-link.active{
+            background:white;
+            color:#0d6efd;
+            font-weight:bold;
+        }
+
+        #contentCard{
+            margin-top:40px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-custom">
+
+    <div class="container">
+
+        <a class="navbar-brand text-white fw-bold" href="#">
+            My Website
+        </a>
+
+        <ul class="navbar-nav ms-auto">
+
+            <li class="nav-item">
+                <a class="nav-link active"
+                   onclick="showPage('home',this)">
+                    Home
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                   onclick="showPage('products',this)">
+                    Products
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                   onclick="showPage('services',this)">
+                    Services
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                   onclick="showPage('about',this)">
+                    About
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                   onclick="showPage('contact',this)">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+<div class="container">
+
+    <div class="card shadow-lg" id="contentCard">
+
+        <div class="card-body" id="content">
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    const pages = {
+
+        home: `
+            <h2 class="text-primary"> Home</h2>
+            <hr>
+
+            <p class="lead">
+                Welcome to our website.
+            </p>
+
+            <p>
+                This is the Home page. Here you can find the latest updates,
+                featured products, and announcements.
+            </p>
+        `,
+
+        products: `
+            <h2 class="text-success"> Products</h2>
+            <hr>
+
+            <p class="lead">
+                Our Products
+            </p>
+
+            <ul>
+                <li>Laptops</li>
+                <li>Mobiles</li>
+                <li>Accessories</li>
+                <li>Smart Watches</li>
+                <li>Headphones</li>
+            </ul>
+        `,
+
+        services: `
+            <h2 class="text-warning"> Services</h2>
+            <hr>
+
+            <p class="lead">
+                What We Offer
+            </p>
+
+            <ul>
+                <li>Software Development</li>
+                <li>Web Design</li>
+                <li>Cloud Solutions</li>
+                <li>Technical Support</li>
+                <li>Consulting</li>
+            </ul>
+        `,
+
+        about: `
+            <h2 class="text-info"> About Us</h2>
+            <hr>
+
+            <p class="lead">
+                Learn More About Us
+            </p>
+
+            <p>
+                We are a technology company dedicated to delivering quality
+                software solutions using modern technologies.
+            </p>
+        `,
+
+        contact: `
+            <h2 class="text-danger"> Contact</h2>
+            <hr>
+
+            <p class="lead">
+                Get in Touch
+            </p>
+
+            <p>Email : support@example.com</p>
+
+            <p>Phone : +91 9876543210</p>
+
+            <p>Address : Chennai, Tamil Nadu</p>
+        `
+    };
+
+
+    function showPage(pageName, element){
+
+        // Remove active class from every tab
+
+        document.querySelectorAll(".nav-link").forEach(link=>{
+
+            link.classList.remove("active");
+
+        });
+
+        // Highlight selected tab
+
+        element.classList.add("active");
+
+        // Change content
+
+        document.getElementById("content").innerHTML = pages[pageName];
+
+    }
+
+    // Default page
+
+    window.onload=function(){
+
+        document.getElementById("content").innerHTML = pages.home;
+
+    }
+
+</script>
+
+</body>
+
+</html>

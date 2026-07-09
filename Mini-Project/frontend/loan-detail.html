@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Details - NorthernArc</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="bi bi-bank2 me-2"></i>NorthernArc
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="customer-dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="my-loans.html">My Loans</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="apply-loan.html">Apply for Loan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="make-payment.html">Make Payment</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-1"></i>Rahul Sharma
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="login.html"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="customer-dashboard.html" class="text-decoration-none">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="my-loans.html" class="text-decoration-none">My Loans</a></li>
+                <li class="breadcrumb-item active">Loan #1001</li>
+            </ol>
+        </nav>
+
+        <!-- Loan Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h4 class="fw-bold mb-1">Loan Account #1001</h4>
+                <span class="badge badge-active fs-6">ACTIVE</span>
+            </div>
+            <div class="d-flex gap-2">
+                <a href="make-payment.html" class="btn btn-success">
+                    <i class="bi bi-credit-card me-2"></i>Pay EMI
+                </a>
+                <a href="my-loans.html" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left me-2"></i>Back
+                </a>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Loan Information -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-white py-3">
+                        <h6 class="fw-bold mb-0"><i class="bi bi-info-circle me-2"></i>Loan Information</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <p class="loan-detail-label mb-1">Loan Account ID</p>
+                                <p class="fw-bold mb-0">#1001</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="loan-detail-label mb-1">Loan Product</p>
+                                <p class="fw-bold mb-0">Home Loan (LP001)</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="loan-detail-label mb-1">Loan Type</p>
+                                <p class="fw-bold mb-0"><span class="badge bg-primary">HOME</span></p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="loan-detail-label mb-1">Loan Amount</p>
+                                <p class="fw-bold text-primary mb-0 fs-5">₹15,00,000</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="loan-detail-label mb-1">EMI Amount</p>
+                                <p class="fw-bold mb-0 fs-5">₹25,000</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="loan-detail-label mb-1">Interest Rate</p>
+                                <p class="fw-bold mb-0 fs-5">8.5%</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="loan-detail-label mb-1">Start Date</p>
+                                <p class="fw-bold mb-0">Jan 15, 2026</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="loan-detail-label mb-1">Next EMI Due</p>
+                                <p class="fw-bold text-warning mb-0">Aug 15, 2026</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="loan-detail-label mb-1">Close Date</p>
+                                <p class="fw-bold text-muted mb-0">—</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EMI Payment History -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                        <h6 class="fw-bold mb-0"><i class="bi bi-clock-history me-2"></i>EMI Payment History</h6>
+                        <span class="badge bg-primary">6 payments</span>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Payment ID</th>
+                                        <th>Payment Date</th>
+                                        <th>Amount Paid</th>
+                                        <th>Penalty</th>
+                                        <th>Payment Mode</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#501</td>
+                                        <td>Jul 5, 2026</td>
+                                        <td class="text-success fw-bold">₹25,000</td>
+                                        <td>₹0</td>
+                                        <td><span class="badge bg-info">UPI</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#402</td>
+                                        <td>Jun 15, 2026</td>
+                                        <td class="text-success fw-bold">₹25,000</td>
+                                        <td>₹0</td>
+                                        <td><span class="badge bg-info">ONLINE</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#350</td>
+                                        <td>May 18, 2026</td>
+                                        <td class="text-success fw-bold">₹25,000</td>
+                                        <td class="text-danger">₹375</td>
+                                        <td><span class="badge bg-secondary">CARD</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#290</td>
+                                        <td>Apr 15, 2026</td>
+                                        <td class="text-success fw-bold">₹25,000</td>
+                                        <td>₹0</td>
+                                        <td><span class="badge bg-info">UPI</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#220</td>
+                                        <td>Mar 16, 2026</td>
+                                        <td class="text-success fw-bold">₹25,000</td>
+                                        <td class="text-danger">₹125</td>
+                                        <td><span class="badge bg-info">ONLINE</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#150</td>
+                                        <td>Feb 15, 2026</td>
+                                        <td class="text-success fw-bold">₹25,000</td>
+                                        <td>₹0</td>
+                                        <td><span class="badge bg-warning text-dark">CASH</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Customer Info -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-white py-3">
+                        <h6 class="fw-bold mb-0"><i class="bi bi-person me-2"></i>Customer Details</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width:48px;height:48px;">
+                                <span class="fw-bold">RS</span>
+                            </div>
+                            <div>
+                                <p class="fw-bold mb-0">Rahul Sharma</p>
+                                <small class="text-muted">Customer ID: 4</small>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="small mb-2"><i class="bi bi-envelope me-2 text-muted"></i>rahul.sharma@northernarc.com</p>
+                        <p class="small mb-0"><i class="bi bi-building me-2 text-muted"></i>Bangalore Branch</p>
+                    </div>
+                </div>
+
+                <!-- Payment Summary -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-white py-3">
+                        <h6 class="fw-bold mb-0"><i class="bi bi-calculator me-2"></i>Payment Summary</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Total Paid</span>
+                            <span class="fw-bold text-success">₹1,50,000</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Total Penalty</span>
+                            <span class="fw-bold text-danger">₹500</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Outstanding</span>
+                            <span class="fw-bold">₹13,50,000</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">Payments Made</span>
+                            <span class="fw-bold">6 of ~60</span>
+                        </div>
+                        <div class="progress mt-2" style="height: 8px;">
+                            <div class="progress-bar bg-success" style="width: 10%"></div>
+                        </div>
+                        <small class="text-muted">10% completed</small>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <h6 class="fw-bold mb-0"><i class="bi bi-lightning me-2"></i>Actions</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a href="make-payment.html" class="btn btn-success">
+                                <i class="bi bi-credit-card me-2"></i>Make EMI Payment
+                            </a>
+                            <a href="my-loans.html" class="btn btn-outline-primary">
+                                <i class="bi bi-list-ul me-2"></i>View All Loans
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-3 mt-4">
+        <div class="container">
+            <p class="text-center text-muted small mb-0">&copy; 2026 NorthernArc Loan Management. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

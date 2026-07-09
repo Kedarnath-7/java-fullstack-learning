@@ -1,0 +1,9 @@
+<p>person-form works!</p>
+<input type="number" [(ngModel)]="p.id">
+<input type="text" [(ngModel)]="p.name">
+<input type="text" [(ngModel)]="p.role">
+<input type="number" [(ngModel)]="p.age">
+
+<button (click)="savePerson()">
+    {{ isEditing ? 'Update' : 'Add' }}
+</button>

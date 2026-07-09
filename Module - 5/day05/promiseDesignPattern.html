@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Promise Design Pattern</title>
+        
+    </head>
+
+    <body>
+        <div id="message"></div>
+        <script>
+            function myPromise(resolve, reject) {
+                document.getElementById("message").innerHTML = `<h1>Starting...</h1>`;
+                setTimeout(() => {
+                    let answer = Math.round(Math.random());
+                    if (answer === 0) {
+                        resolve();
+                    } else {
+                        reject();
+                    }
+                }, Math.floor(Math.random() * 3000));
+            }
+
+            myPromise(
+                (resolve) => {
+                    document.getElementById("message").innerHTML = `<h1>Promise Resolved</h1>`;
+                },
+                (reject) => {
+                    document.getElementById("message").innerHTML = `<h1>Promise Rejected</h1>`;
+                }
+            );
+
+            function myPromiseWithThenCatch() {
+                document.getElementById("message").innerHTML = `<h1>Starting...</h1>`;
+                new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        let answer = Math.round(Math.random());
+                        if (answer === 0) {
+                            resolve();
+                        } else {
+                            reject();
+                        }
+                    }, Math.floor(Math.random() * 3000));
+                });
+            }
+
+            myPromiseWithThenCatch()
+                                    .then(()=>{document.getElementById("message").innerHTML += `<h1>Promise Completed</h1>`})
+                                    .catch(()=>{document.getElementById("message").innerHTML += `<h1>Promise Failed</h1>`});
+        </script>
+    </body>
+</html>

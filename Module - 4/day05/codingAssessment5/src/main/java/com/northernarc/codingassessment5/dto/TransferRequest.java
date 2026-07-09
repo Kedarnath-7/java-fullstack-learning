@@ -1,0 +1,13 @@
+package com.northernarc.codingassessment5.dto;
+
+import lombok.*;
+import java.math.BigDecimal;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class TransferRequest {
+    private Long sourceAccountId;
+    private Long destinationAccountId;
+    private BigDecimal amount;
+}

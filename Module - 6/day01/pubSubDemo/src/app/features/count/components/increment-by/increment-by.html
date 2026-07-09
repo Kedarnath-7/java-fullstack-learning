@@ -1,0 +1,31 @@
+<div class="card shadow-sm border-0 mb-3">
+  <div class="card-body">
+
+    <h6 class="card-title mb-3">
+      Increment By
+    </h6>
+
+    <div class="input-group">
+
+      <span class="input-group-text">+</span>
+
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="incrementAmount"
+        placeholder="Enter amount">
+
+      <button
+        class="btn btn-success"
+        (click)="countService.incrementBy(incrementAmount)">
+        Increment
+      </button>
+
+    </div>
+
+    <small class="text-muted">
+      Increase the counter by a custom value.
+    </small>
+
+  </div>
+</div>

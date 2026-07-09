@@ -5,6 +5,8 @@ import com.northernarc.loanmanagement.dto.CustomerRequestDTO;
 import com.northernarc.loanmanagement.dto.CustomerResponseDTO;
 import com.northernarc.loanmanagement.dto.CustomerSummaryDTO;
 import com.northernarc.loanmanagement.dto.DashboardDTO;
+import com.northernarc.loanmanagement.dto.EmiCalculatorRequestDTO;
+import com.northernarc.loanmanagement.dto.EmiCalculatorResponseDTO;
 import com.northernarc.loanmanagement.dto.EmiPaymentDTO;
 import com.northernarc.loanmanagement.dto.EmiPaymentResponseDTO;
 import com.northernarc.loanmanagement.dto.LoanAccountRequestDTO;
@@ -219,6 +221,13 @@ public class LoanController {
     public ResponseEntity<EmiPaymentResponseDTO> makeEmiPayment(@Valid @RequestBody EmiPaymentDTO emiPaymentDTO) {
         EmiPaymentResponseDTO payment = loanService.makeEmiPayment(emiPaymentDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(payment);
+    }
+
+    @Operation(summary = "Calculate EMI")
+    @PostMapping("/emi-calculator")
+    @PreAuthorize("hasAnyRole('USER','ADMIN','MANAGER')")
+    public ResponseEntity<EmiCalculatorResponseDTO> calculateEmi(@Valid @RequestBody EmiCalculatorRequestDTO request) {
+        return ResponseEntity.ok(loanService.calculateEmi(request));
     }
 
     @Operation(summary = "Get customer summary DTO")

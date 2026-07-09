@@ -22,4 +22,10 @@ public class EmployeeResponseDTO {
     @Valid
     private List<ProjectSummaryDTO> projects;
 
+    public EmployeeResponseDTO(Long id, String name, String dept) {
+        this.id = id;
+        this.name = name;
+        this.dept = dept;
+    }
+
 }

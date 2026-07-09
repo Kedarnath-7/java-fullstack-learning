@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Selection</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body{
+            background:#f4f6f9;
+        }
+
+        .employee-list{
+            max-width:400px;
+            margin:60px auto;
+        }
+
+        .employee{
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .employee:hover{
+            background:#f1f3f5;
+        }
+
+        .selected{
+            background:#0d6efd !important;
+            color:white !important;
+            border-color:#0d6efd !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="employee-list">
+
+        <h3 class="text-center mb-4">Employee List</h3>
+
+        <ul class="list-group" id="employeeList">
+            <li class="list-group-item employee">Rahul Sharma</li>
+            <li class="list-group-item employee">Priya Singh</li>
+            <li class="list-group-item employee">Aman Verma</li>
+            <li class="list-group-item employee">Neha Gupta</li>
+            <li class="list-group-item employee">Rohit Kumar</li>
+            <li class="list-group-item employee">Sneha Patel</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<script>
+
+const employeeList = document.getElementById("employeeList");
+const employees = document.querySelectorAll(".employee");
+
+let selectedEmployee = null;
+
+employees.forEach(employee => {
+
+    employee.addEventListener("click", function(event){
+
+        event.stopPropagation();
+
+        if(selectedEmployee){
+            selectedEmployee.classList.remove("selected");
+        }
+
+        this.classList.add("selected");
+        selectedEmployee = this;
+
+    });
+
+});
+
+document.addEventListener("click", function(){
+
+    if(selectedEmployee){
+        selectedEmployee.classList.remove("selected");
+        selectedEmployee = null;
+    }
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<div class="card p-3 shadow-sm mb-3">
+  <h5 class="mb-3">Increment By</h5>
+
+  <div class="input-group">
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="value">
+
+    <button
+      class="btn btn-primary"
+      (click)="countService.incrementCountBy(value)">
+      Add
+    </button>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="card shadow-sm border-0 mb-4">
+  <div class="card-body">
+
+    <label class="form-label fw-semibold">
+      Decrement Counter
+    </label>
+
+    <div class="input-group">
+
+      <span class="input-group-text">
+        -
+      </span>
+
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="decrementAmount"
+        placeholder="Enter amount">
+
+      <button
+        class="btn btn-danger px-4"
+        (click)="countService.decrementBy(decrementAmount)">
+
+        <i class="bi bi-dash-circle me-2"></i>
+        Decrement
+
+      </button>
+
+    </div>
+
+    <small class="text-muted">
+      Enter the value to subtract from the counter.
+    </small>
+
+  </div>
+</div>

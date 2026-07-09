@@ -4,6 +4,8 @@ import com.northernarc.loanmanagement.dto.CustomerRequestDTO;
 import com.northernarc.loanmanagement.dto.CustomerResponseDTO;
 import com.northernarc.loanmanagement.dto.CustomerSummaryDTO;
 import com.northernarc.loanmanagement.dto.DashboardDTO;
+import com.northernarc.loanmanagement.dto.EmiCalculatorRequestDTO;
+import com.northernarc.loanmanagement.dto.EmiCalculatorResponseDTO;
 import com.northernarc.loanmanagement.dto.EmiPaymentDTO;
 import com.northernarc.loanmanagement.dto.EmiPaymentResponseDTO;
 import com.northernarc.loanmanagement.dto.LoanAccountRequestDTO;
@@ -59,6 +61,8 @@ public interface LoanService {
     void deleteLoanAccount(Long loanAccountId);
 
     // EMI use cases
+    EmiCalculatorResponseDTO calculateEmi(EmiCalculatorRequestDTO request);
+
     EmiPaymentResponseDTO makeEmiPayment(EmiPaymentDTO emiPaymentDTO);
 
     // Reporting use cases

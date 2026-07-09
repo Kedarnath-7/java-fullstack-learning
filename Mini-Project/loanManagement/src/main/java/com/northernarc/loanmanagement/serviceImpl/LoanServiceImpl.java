@@ -4,6 +4,8 @@ import com.northernarc.loanmanagement.dto.CustomerRequestDTO;
 import com.northernarc.loanmanagement.dto.CustomerResponseDTO;
 import com.northernarc.loanmanagement.dto.CustomerSummaryDTO;
 import com.northernarc.loanmanagement.dto.DashboardDTO;
+import com.northernarc.loanmanagement.dto.EmiCalculatorRequestDTO;
+import com.northernarc.loanmanagement.dto.EmiCalculatorResponseDTO;
 import com.northernarc.loanmanagement.dto.EmiPaymentDTO;
 import com.northernarc.loanmanagement.dto.EmiPaymentResponseDTO;
 import com.northernarc.loanmanagement.dto.LoanAccountRequestDTO;
@@ -37,6 +39,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 @Service
@@ -367,6 +371,47 @@ public class LoanServiceImpl implements LoanService {
     }
 
     @Override
+    public EmiCalculatorResponseDTO calculateEmi(EmiCalculatorRequestDTO request) {
+        if (request == null) {
+            throw new ValidationException("EMI calculator request cannot be null");
+        }
+
+        if (request.getLoanAmount() == null || request.getLoanAmount() <= 0) {
+            throw new ValidationException("Loan amount must be positive");
+        }
+        if (request.getAnnualInterestRate() == null || request.getAnnualInterestRate() < 0) {
+            throw new ValidationException("Annual interest rate must be zero or positive");
+        }
+        if (request.getTenureInMonths() == null || request.getTenureInMonths() <= 0) {
+            throw new ValidationException("Tenure in months must be positive");
+        }
+
+        double principal = request.getLoanAmount();
+        int tenure = request.getTenureInMonths();
+        double monthlyRate = request.getAnnualInterestRate() / 1200.0;
+
+        double emi;
+        if (monthlyRate == 0.0) {
+            emi = principal / tenure;
+        } else {
+            double ratePower = Math.pow(1 + monthlyRate, tenure);
+            emi = (principal * monthlyRate * ratePower) / (ratePower - 1);
+        }
+
+        double totalPayableAmount = emi * tenure;
+        double totalInterest = totalPayableAmount - principal;
+
+        return new EmiCalculatorResponseDTO(
+                roundCurrency(principal),
+                request.getAnnualInterestRate(),
+                tenure,
+                roundCurrency(emi),
+                roundCurrency(totalPayableAmount),
+                roundCurrency(totalInterest)
+        );
+    }
+
+    @Override
     public EmiPaymentResponseDTO makeEmiPayment(EmiPaymentDTO dto) {
         if (dto == null) {
             throw new ValidationException("EMI payment request cannot be null");
@@ -455,6 +500,10 @@ public class LoanServiceImpl implements LoanService {
 
     private Double valueOrZero(Double value) {
         return value == null ? 0.0 : value;
+    }
+
+    private Double roundCurrency(double value) {
+        return BigDecimal.valueOf(value).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
     private CustomerResponseDTO toCustomerResponse(Customer customer) {

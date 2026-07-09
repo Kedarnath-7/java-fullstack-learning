@@ -1,0 +1,30 @@
+<html>
+    <head> <title> Async/Await </title></head>
+    <body>
+        <button onclick="myAsyncFunction()" style="font-size: 20px;">Click Here to start async programming</button>
+        <div id="message"></div>
+        <script>
+
+            function myPromise() {
+                document.getElementById("message").innerHTML = `<h1>Starting...</h1>`;
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        let answer = Math.round(Math.random());
+                        if (answer === 0) {
+                            resolve("Promise Resolved");
+                        } else {
+                            reject("Promise Rejected");
+                        }
+                    }, Math.floor(Math.random() * 3000));
+                });
+            }
+            
+            async function myAsyncFunction() {
+                let result = "Waiting to for result";
+                result = await myPromise().then(()=>{document.getElementById("message").innerHTML += `<h1>Promise Completed</h1>`})
+                                    .catch(()=>{document.getElementById("message").innerHTML += `<h1>Promise Failed</h1>`});
+                document.getElementById("message").innerHTML += `<h1>Result: ${result}</h1>`;
+            }
+        </script>
+    </body>
+</html>

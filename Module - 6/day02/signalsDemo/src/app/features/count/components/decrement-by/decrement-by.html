@@ -1,0 +1,16 @@
+<div class="card p-3 shadow-sm">
+  <h5 class="mb-3">Decrement By</h5>
+
+  <div class="input-group">
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="value">
+
+    <button
+      class="btn btn-warning"
+      (click)="countService.decrementCountBy(value)">
+      Subtract
+    </button>
+  </div>
+</div>
