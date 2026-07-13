@@ -1,0 +1,60 @@
+/* NorthernArc Loan Management - Global Styles */
+
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.stat-card {
+  border-left: 4px solid;
+}
+
+.badge-pending  { background-color: #ffc107; color: #212529; }
+.badge-active   { background-color: #198754; }
+.badge-rejected { background-color: #dc3545; }
+.badge-closed   { background-color: #6c757d; }
+.badge-overdue  { background-color: #fd7e14; }
+
+.table th {
+  font-weight: 600;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.form-section {
+  background: #f8f9fa;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.loan-detail-label {
+  font-weight: 600;
+  color: #6c757d;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 2rem;
+  padding-bottom: 1.5rem;
+  border-left: 2px solid #dee2e6;
+}
+.timeline-item:last-child {
+  border-left: 2px solid transparent;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #0d6efd;
+}

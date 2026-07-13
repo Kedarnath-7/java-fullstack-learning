@@ -1,0 +1,41 @@
+<!-- Login Page -->
+<div class="auth-container">
+  <div class="card auth-card">
+    <div class="card-body p-4">
+      <h4 class="fw-bold mb-1">Welcome Back</h4>
+      <p class="text-muted mb-4">Sign in to your account</p>
+
+      @if (errorMessage) {
+        <div class="alert alert-danger py-2">{{ errorMessage }}</div>
+      }
+
+      <form (ngSubmit)="onLogin()">
+        <div class="mb-3">
+          <label class="form-label">Email Address</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+            <input type="email" class="form-control" placeholder="you@example.com"
+                   [(ngModel)]="loginData.email" name="email" required>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+            <input type="password" class="form-control" placeholder="Enter your password"
+                   [(ngModel)]="loginData.password" name="password" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 btn-lg">
+          <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+        </button>
+      </form>
+
+      <hr class="my-4">
+      <p class="text-center text-muted small mb-0">
+        Don't have an account?
+        <a routerLink="/register" class="fw-semibold">Create one</a>
+      </p>
+    </div>
+  </div>
+</div>

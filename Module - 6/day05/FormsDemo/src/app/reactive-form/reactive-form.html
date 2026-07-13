@@ -1,0 +1,19 @@
+<div>
+    <h2> Reactive Form </h2>
+
+    <form [formGroup]="customerForm">
+        <div>
+            <input type="text" formControlName="name" placeholder="Enter Name">
+            <small *ngIf="customerForm.get('name')?.errors && customerForm.get('name')?.touched" style="color:red"> Name is required </small>
+        </div>
+        <div>
+            <input type="number" formControlName="age" placeholder="Enter Age">
+            <small *ngIf="customerForm.get('age')?.errors && customerForm.get('age')?.touched" style="color:red"> Age is required </small>
+            <small *ngIf="customerForm.get('age')?.errors && (customerForm.get('age')?.value ?? 0) < 0" style="color:red"> Age should be a positive number </small>
+        </div>
+        <div>
+            <button type="submit" [disabled]="customerForm.invalid"> Submit </button>
+        </div>
+        <pre> {{customerForm.value | json}} </pre>
+    </form>
+</div>

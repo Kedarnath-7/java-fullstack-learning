@@ -1,0 +1,382 @@
+/* ===== Custom Styles for ShopEase E-Commerce ===== */
+
+/* ---------- General ---------- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ---------- Navbar ---------- */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.navbar .nav-link {
+  font-weight: 500;
+}
+
+.navbar .badge {
+  font-size: 0.65rem;
+  position: relative;
+  top: -8px;
+  left: -5px;
+}
+
+/* ---------- Hero Section ---------- */
+.hero-section {
+  background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+  color: #fff;
+  padding: 80px 0;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* ---------- Section Headings ---------- */
+.section-title {
+  font-weight: 700;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 3px;
+  background: #0d6efd;
+  margin-top: 6px;
+}
+
+/* ---------- Product Cards ---------- */
+.product-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.product-card .card-img-top {
+  height: 200px;
+  object-fit: cover;
+  background-color: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #adb5bd;
+}
+
+.product-card .card-body {
+  padding: 1.25rem;
+}
+
+.product-card .product-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0d6efd;
+}
+
+.product-card .product-brand {
+  font-size: 0.85rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.product-card .product-category {
+  font-size: 0.75rem;
+  background-color: #e7f1ff;
+  color: #0d6efd;
+  padding: 2px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* ---------- Category Cards ---------- */
+.category-card {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  border-radius: 10px;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.category-card .category-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+/* ---------- Search & Filter Bar ---------- */
+.search-bar {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  margin-bottom: 30px;
+}
+
+/* ---------- Cart Table ---------- */
+.cart-table th {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+  font-weight: 600;
+}
+
+.cart-table td {
+  vertical-align: middle;
+}
+
+/* ---------- Order Cards ---------- */
+.order-card {
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+  transition: box-shadow 0.2s ease;
+}
+
+.order-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.order-status {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.order-status.delivered {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.order-status.processing {
+  background-color: #fff3cd;
+  color: #664d03;
+}
+
+.order-status.pending {
+  background-color: #cfe2ff;
+  color: #084298;
+}
+
+.order-status.cancelled {
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+/* ---------- Order Detail Timeline ---------- */
+.order-timeline {
+  border-left: 3px solid #0d6efd;
+  padding-left: 20px;
+  margin-left: 10px;
+}
+
+.order-timeline .timeline-item {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.order-timeline .timeline-item::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #0d6efd;
+  position: absolute;
+  left: -27px;
+  top: 4px;
+}
+
+.order-timeline .timeline-item.inactive::before {
+  background: #dee2e6;
+}
+
+/* ---------- Profile ---------- */
+.profile-header {
+  background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+  color: #fff;
+  border-radius: 10px;
+  padding: 40px;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+/* ---------- Auth Pages ---------- */
+.auth-container {
+  max-width: 450px;
+  margin: 60px auto;
+}
+
+.auth-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Product Detail ---------- */
+.product-detail-img {
+  height: 400px;
+  background-color: #e9ecef;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  color: #adb5bd;
+}
+
+.product-detail .detail-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0d6efd;
+}
+
+/* ---------- Stock Badge ---------- */
+.stock-badge.in-stock {
+  color: #0f5132;
+  background-color: #d1e7dd;
+}
+
+.stock-badge.low-stock {
+  color: #664d03;
+  background-color: #fff3cd;
+}
+
+.stock-badge.out-of-stock {
+  color: #842029;
+  background-color: #f8d7da;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background-color: #212529;
+  color: #adb5bd;
+  padding: 40px 0 20px;
+}
+
+.footer h6 {
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.footer a {
+  color: #adb5bd;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  border-top: 1px solid #495057;
+  padding-top: 15px;
+  margin-top: 30px;
+}
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+  background: transparent;
+  padding: 10px 0;
+}
+
+/* ---------- Summary Card ---------- */
+.summary-card {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.summary-card .summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.summary-card .summary-row:last-child {
+  border-bottom: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* ---------- Quantity Control ---------- */
+.qty-control {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.qty-control .qty-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #f8f9fa;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.qty-control .qty-value {
+  width: 40px;
+  text-align: center;
+  border: none;
+  border-left: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+  height: 32px;
+  font-weight: 600;
+}
+
+/* ---------- Empty State ---------- */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6c757d;
+}
+
+.empty-state .empty-icon {
+  font-size: 4rem;
+  margin-bottom: 15px;
+}

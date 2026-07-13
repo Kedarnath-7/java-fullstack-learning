@@ -80,7 +80,6 @@ public class EmployeeServiceImpl implements EmployeeService{
                 .toList();
     }
 
-
     public List<EmployeeResponseDTO> getAllByDepartment(String dept) {
         return employeeRepository.getAllEmployees(dept);
     }

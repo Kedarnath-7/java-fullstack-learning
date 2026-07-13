@@ -1,0 +1,19 @@
+<h2> Special Form </h2>
+<form #specialForm="ngForm" (ngSubmit)="handleSubmit(specialForm)">
+<div>
+        <input type = "text" name="name"[(ngModel)] = "newCustomer.name" placeholder = "Enter Name" required #name="ngModel" minlength="3">
+        <small *ngIf = "name.invalid && name.touched"> Name is required </small>
+        <small *ngIf = "name.valid && newCustomer.name.length < 3"> Name should be at least 3 characters </small>
+        <!-- <small *ngIf = "newCustomer.name.length == 0"> Name is required </small>
+        <small *ngIf = "newCustomer.name.length > 0 && newCustomer.name.length < 3"> Name should be at least 3 characters </small> -->
+</div>
+<div>
+        <input type="number" name="age" [(ngModel)] = "newCustomer.age" placeholder = "Enter Age" required #age="ngModel">
+        <small *ngIf = "age.invalid && age.touched"> Age is required </small>
+        <small *ngIf = "age.valid && newCustomer.age < 0"> Age should be a positive number </small>
+        <!-- <small *ngIf = "newCustomer.age == 0"> Age is required </small>
+        <small *ngIf = "newCustomer.age < 0"> Age should be a positive number </small> -->
+</div>
+<button type="submit"> Submit </button>
+</form>
+<pre> {{newCustomer | json}} </pre>

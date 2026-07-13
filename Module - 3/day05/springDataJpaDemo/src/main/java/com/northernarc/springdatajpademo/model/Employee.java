@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,6 +30,6 @@ public class Employee {
 
     @ManyToMany(mappedBy = "employeeList")
     @JsonIgnore
-    private List<Project> projectList;
+    private List<Project> projectList = new ArrayList<>();
 
 }

@@ -1,0 +1,100 @@
+<!-- Breadcrumb -->
+<div class="container mt-3">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item"><a routerLink="/products">Products</a></li>
+      <li class="breadcrumb-item active">{{ product()?.name }}</li>
+    </ol>
+  </nav>
+</div>
+
+@if (product()) {
+<div class="container product-detail pb-5">
+  <div class="row g-4">
+    <!-- Product Image -->
+    <div class="col-md-5">
+      <div class="product-detail-img">&#128230;</div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="col-md-7">
+      <span class="product-category mb-2">{{ product()!.category }}</span>
+      <h2 class="fw-bold mt-2">{{ product()!.name }}</h2>
+      <p class="text-muted mb-1">
+        <span style="font-size: 1rem;">Brand: <strong>{{ product()!.brand }}</strong></span>
+      </p>
+      <p class="text-muted mb-3">Product ID: <strong>#{{ product()!.product_id }}</strong></p>
+
+      <div class="detail-price mb-3">&#8377;{{ product()!.cost | number:'1.2-2' }}</div>
+
+      <div class="mb-3">
+        @if (product()!.stock > 20) {
+          <span class="badge stock-badge in-stock fs-6">
+            <i class="bi bi-check-circle-fill me-1"></i>In Stock &mdash; {{ product()!.stock }} units available
+          </span>
+        } @else if (product()!.stock > 0) {
+          <span class="badge stock-badge low-stock fs-6">
+            <i class="bi bi-exclamation-circle-fill me-1"></i>Low Stock &mdash; {{ product()!.stock }} units left
+          </span>
+        } @else {
+          <span class="badge stock-badge out-of-stock fs-6">
+            <i class="bi bi-x-circle-fill me-1"></i>Out of Stock
+          </span>
+        }
+      </div>
+
+      <hr>
+
+      <div class="row g-3 mb-4">
+        <div class="col-auto">
+          <label class="form-label fw-semibold">Quantity</label>
+          <div class="qty-control">
+            <button class="qty-btn" type="button" (click)="decreaseQty()">&minus;</button>
+            <input type="text" class="qty-value" [value]="quantity()" readonly>
+            <button class="qty-btn" type="button" (click)="increaseQty()">&plus;</button>
+          </div>
+        </div>
+      </div>
+
+      @if (addedToCart()) {
+        <div class="alert alert-success py-2 mb-3">
+          <i class="bi bi-check-circle me-1"></i> Added to cart!
+        </div>
+      }
+
+      <div class="d-flex gap-2">
+        <button class="btn btn-primary btn-lg" (click)="addToCart()" [disabled]="product()!.stock === 0">
+          <i class="bi bi-cart-plus me-2"></i>Add to Cart
+        </button>
+        <button class="btn btn-outline-secondary btn-lg">
+          <i class="bi bi-heart"></i>
+        </button>
+      </div>
+
+      <hr class="mt-4">
+
+      <div class="row text-center">
+        <div class="col-4">
+          <i class="bi bi-truck text-primary fs-4"></i>
+          <p class="small text-muted mb-0 mt-1">Free Shipping</p>
+        </div>
+        <div class="col-4">
+          <i class="bi bi-arrow-repeat text-primary fs-4"></i>
+          <p class="small text-muted mb-0 mt-1">30-Day Returns</p>
+        </div>
+        <div class="col-4">
+          <i class="bi bi-shield-check text-primary fs-4"></i>
+          <p class="small text-muted mb-0 mt-1">1 Year Warranty</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+} @else {
+<div class="container py-5 text-center">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+}

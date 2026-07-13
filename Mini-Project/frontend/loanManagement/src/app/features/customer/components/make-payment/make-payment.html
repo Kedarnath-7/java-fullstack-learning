@@ -1,0 +1,111 @@
+<div class="container py-4">
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/customer/dashboard" class="text-decoration-none">Dashboard</a></li>
+      <li class="breadcrumb-item active">Make EMI Payment</li>
+    </ol>
+  </nav>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-success text-white py-3">
+          <h5 class="fw-bold mb-0"><i class="bi bi-credit-card me-2"></i>EMI Payment</h5>
+        </div>
+        <div class="card-body p-4">
+          <form>
+            <!-- Loan Account Selection -->
+            <div class="form-section">
+              <h6 class="fw-bold text-success mb-3"><i class="bi bi-file-earmark-text me-2"></i>Select Loan Account</h6>
+              <div class="mb-3">
+                <label for="loanAccountId" class="form-label">Loan Account <span class="text-danger">*</span></label>
+                <select class="form-select" id="loanAccountId">
+                  <option value="">-- Select Active Loan Account --</option>
+                  <option value="1001">#1001 - Home Loan - ₹15,00,000 (ACTIVE)</option>
+                  <option value="1004">#1004 - Home Loan - ₹25,00,000 (OVERDUE)</option>
+                </select>
+              </div>
+
+              <!-- Loan Info Preview -->
+              <div class="row g-2">
+                <div class="col-md-4">
+                  <div class="bg-white rounded p-2 text-center">
+                    <small class="text-muted d-block">Product</small>
+                    <strong>Home Loan (LP001)</strong>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="bg-white rounded p-2 text-center">
+                    <small class="text-muted d-block">EMI Amount</small>
+                    <strong class="text-primary">₹25,000</strong>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="bg-white rounded p-2 text-center">
+                    <small class="text-muted d-block">Due Date</small>
+                    <strong class="text-warning">2026-08-15</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Payment Details (EmiPaymentDTO) -->
+            <div class="form-section">
+              <h6 class="fw-bold text-success mb-3"><i class="bi bi-cash-stack me-2"></i>Payment Details</h6>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="amountPaid" class="form-label">Amount to Pay (₹) <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text">₹</span>
+                    <input type="number" class="form-control" id="amountPaid" placeholder="e.g., 25000">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="penaltyPaid" class="form-label">Penalty Amount (₹) <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text">₹</span>
+                    <input type="number" class="form-control" id="penaltyPaid" value="0">
+                  </div>
+                  <small class="text-muted">Enter 0 if no penalty is due</small>
+                </div>
+                <div class="col-md-6">
+                  <label for="paymentType" class="form-label">Payment Mode <span class="text-danger">*</span></label>
+                  <select class="form-select" id="paymentType">
+                    <option value="">-- Select Mode --</option>
+                    <option value="UPI">UPI</option>
+                    <option value="ONLINE">Online Banking</option>
+                    <option value="CARD">Debit/Credit Card</option>
+                    <option value="CASH">Cash</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="paymentDate" class="form-label">Payment Date <span class="text-danger">*</span></label>
+                  <input type="date" class="form-control" id="paymentDate">
+                </div>
+              </div>
+            </div>
+
+            <!-- Total -->
+            <div class="bg-light rounded p-3 mb-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-bold">Total Payment:</span>
+                <span class="fw-bold fs-5 text-success">₹25,000</span>
+              </div>
+            </div>
+
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-success px-4">
+                <i class="bi bi-check-circle me-2"></i>Confirm Payment
+              </button>
+              <button type="reset" class="btn btn-outline-secondary px-4">
+                <i class="bi bi-arrow-counterclockwise me-2"></i>Reset
+              </button>
+              <a routerLink="/customer/dashboard" class="btn btn-outline-danger px-4 ms-auto">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

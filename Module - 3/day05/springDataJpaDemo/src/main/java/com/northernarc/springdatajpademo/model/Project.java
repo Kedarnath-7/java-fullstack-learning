@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,5 +18,5 @@ public class Project {
     private String name;
     @ManyToMany(cascade = CascadeType.PERSIST)
     @Valid
-    private List<Employee> employeeList;
+    private List<Employee> employeeList = new ArrayList<>();
 }

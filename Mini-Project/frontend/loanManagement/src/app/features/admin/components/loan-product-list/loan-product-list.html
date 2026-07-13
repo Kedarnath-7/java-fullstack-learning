@@ -1,0 +1,90 @@
+<div class="container-fluid px-4 py-4">
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/admin/dashboard" class="text-decoration-none">Dashboard</a></li>
+      <li class="breadcrumb-item active">Loan Products</li>
+    </ol>
+  </nav>
+
+  <div class="card border-0 shadow-sm">
+    <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+      <h5 class="fw-bold mb-0"><i class="bi bi-box me-2"></i>Loan Products</h5>
+      <a routerLink="/admin/loan-products/new" class="btn btn-primary btn-sm">
+        <i class="bi bi-plus-circle me-1"></i>Add Product
+      </a>
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Code</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Interest Rate</th>
+              <th>Daily Penalty Rate</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>LP001</strong></td>
+              <td>Home Loan</td>
+              <td><span class="badge bg-primary">HOME</span></td>
+              <td>8.5%</td>
+              <td>0.05%</td>
+              <td>
+                <a routerLink="/admin/loan-products/edit/LP001" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></a>
+                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>LP002</strong></td>
+              <td>Personal Loan</td>
+              <td><span class="badge bg-success">PERSONAL</span></td>
+              <td>11.5%</td>
+              <td>0.08%</td>
+              <td>
+                <a routerLink="/admin/loan-products/edit/LP002" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></a>
+                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>LP003</strong></td>
+              <td>Education Loan</td>
+              <td><span class="badge bg-info">EDUCATION</span></td>
+              <td>9.1%</td>
+              <td>0.03%</td>
+              <td>
+                <a routerLink="/admin/loan-products/edit/LP003" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></a>
+                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>LP004</strong></td>
+              <td>Vehicle Loan</td>
+              <td><span class="badge bg-warning text-dark">VEHICLE</span></td>
+              <td>10.2%</td>
+              <td>0.06%</td>
+              <td>
+                <a routerLink="/admin/loan-products/edit/LP004" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></a>
+                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>LP005</strong></td>
+              <td>Business Loan</td>
+              <td><span class="badge bg-dark">BUSINESS</span></td>
+              <td>12.0%</td>
+              <td>0.10%</td>
+              <td>
+                <a routerLink="/admin/loan-products/edit/LP005" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></a>
+                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

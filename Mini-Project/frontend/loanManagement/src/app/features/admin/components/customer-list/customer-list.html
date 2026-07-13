@@ -1,0 +1,104 @@
+<div class="container-fluid px-4 py-4">
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/admin/dashboard" class="text-decoration-none">Dashboard</a></li>
+      <li class="breadcrumb-item active">Customers</li>
+    </ol>
+  </nav>
+
+  <div class="card border-0 shadow-sm">
+    <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+      <h5 class="fw-bold mb-0"><i class="bi bi-people me-2"></i>Customer Management</h5>
+      <a routerLink="/admin/customers/new" class="btn btn-primary btn-sm">
+        <i class="bi bi-plus-circle me-1"></i>Add Customer
+      </a>
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Branch</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td class="fw-bold">Admin User</td>
+              <td>admin&#64;northernarc.com</td>
+              <td>Bangalore</td>
+              <td><span class="badge bg-danger">ADMIN</span></td>
+              <td>
+                <a routerLink="/admin/customers/edit/1" class="btn btn-sm btn-outline-primary me-1" title="Edit"><i class="bi bi-pencil"></i></a>
+                <button class="btn btn-sm btn-outline-info" title="Summary"><i class="bi bi-bar-chart"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="fw-bold">Manager User</td>
+              <td>manager&#64;northernarc.com</td>
+              <td>Mumbai</td>
+              <td><span class="badge bg-info">MANAGER</span></td>
+              <td>
+                <a routerLink="/admin/customers/edit/2" class="btn btn-sm btn-outline-primary me-1" title="Edit"><i class="bi bi-pencil"></i></a>
+                <button class="btn btn-sm btn-outline-info" title="Summary"><i class="bi bi-bar-chart"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="fw-bold">Underwriter User</td>
+              <td>underwriter&#64;northernarc.com</td>
+              <td>Delhi</td>
+              <td><span class="badge bg-warning text-dark">UNDERWRITER</span></td>
+              <td>
+                <a routerLink="/admin/customers/edit/3" class="btn btn-sm btn-outline-primary me-1" title="Edit"><i class="bi bi-pencil"></i></a>
+                <button class="btn btn-sm btn-outline-info" title="Summary"><i class="bi bi-bar-chart"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="fw-bold">Rahul Sharma</td>
+              <td>rahul.sharma&#64;northernarc.com</td>
+              <td>Bangalore</td>
+              <td><span class="badge bg-primary">USER</span></td>
+              <td>
+                <a routerLink="/admin/customers/edit/4" class="btn btn-sm btn-outline-primary me-1" title="Edit"><i class="bi bi-pencil"></i></a>
+                <button class="btn btn-sm btn-outline-info me-1" title="Summary"><i class="bi bi-bar-chart"></i></button>
+                <button class="btn btn-sm btn-outline-danger" title="Delete"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="fw-bold">Priya Patel</td>
+              <td>priya.patel&#64;gmail.com</td>
+              <td>Chennai</td>
+              <td><span class="badge bg-primary">USER</span></td>
+              <td>
+                <a routerLink="/admin/customers/edit/5" class="btn btn-sm btn-outline-primary me-1" title="Edit"><i class="bi bi-pencil"></i></a>
+                <button class="btn btn-sm btn-outline-info me-1" title="Summary"><i class="bi bi-bar-chart"></i></button>
+                <button class="btn btn-sm btn-outline-danger" title="Delete"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="fw-bold">Amit Verma</td>
+              <td>amit.verma&#64;gmail.com</td>
+              <td>Hyderabad</td>
+              <td><span class="badge bg-primary">USER</span></td>
+              <td>
+                <a routerLink="/admin/customers/edit/6" class="btn btn-sm btn-outline-primary me-1" title="Edit"><i class="bi bi-pencil"></i></a>
+                <button class="btn btn-sm btn-outline-info me-1" title="Summary"><i class="bi bi-bar-chart"></i></button>
+                <button class="btn btn-sm btn-outline-danger" title="Delete"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

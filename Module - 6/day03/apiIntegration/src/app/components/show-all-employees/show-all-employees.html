@@ -1,0 +1,34 @@
+<section class="card shadow-sm border-0">
+    <div class="card-body p-4">
+        <h2 class="h4 mb-3">All Employees</h2>
+
+        @if(status().loading){
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="Loading..." />
+        }
+
+        @if(status().error){
+            <div class="alert alert-danger py-2">Error: {{status().error}}</div>
+        }
+
+        @if(status().success) {
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Projects</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for(employee of employees(); track employee.id){
+                            <app-show-employee [employee]="employee" (deleted)="onEmployeeDeleted($event)"></app-show-employee>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</section>

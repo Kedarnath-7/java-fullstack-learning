@@ -1,0 +1,160 @@
+<!-- Hero Section -->
+<section class="hero-section text-center">
+  <div class="container">
+    <h1>Discover Amazing Products</h1>
+    <p class="lead mb-4">Shop the latest electronics, fashion, and more at unbeatable prices.</p>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="input-group input-group-lg">
+          <input type="text" class="form-control" placeholder="Search for products...">
+          <a routerLink="/products" class="btn btn-light">
+            <i class="bi bi-search"></i> Search
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="row g-4">
+      <div class="col-6 col-md-3">
+        <a routerLink="/products" class="text-decoration-none">
+          <div class="card category-card">
+            <div class="category-icon">&#128241;</div>
+            <h6 class="mb-0">Smartphones</h6>
+            <small class="text-muted">12 Products</small>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a routerLink="/products" class="text-decoration-none">
+          <div class="card category-card">
+            <div class="category-icon">&#128187;</div>
+            <h6 class="mb-0">Laptops</h6>
+            <small class="text-muted">8 Products</small>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a routerLink="/products" class="text-decoration-none">
+          <div class="card category-card">
+            <div class="category-icon">&#127911;</div>
+            <h6 class="mb-0">Headphones</h6>
+            <small class="text-muted">15 Products</small>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a routerLink="/products" class="text-decoration-none">
+          <div class="card category-card">
+            <div class="category-icon">&#128247;</div>
+            <h6 class="mb-0">Cameras</h6>
+            <small class="text-muted">6 Products</small>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products -->
+<section class="py-5 bg-white">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="section-title mb-0">Featured Products</h2>
+      <a routerLink="/products" class="btn btn-outline-primary">View All <i class="bi bi-arrow-right"></i></a>
+    </div>
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-3">
+        <a routerLink="/products/1" class="text-decoration-none text-dark">
+          <div class="card product-card h-100">
+            <div class="card-img-top">&#128241;</div>
+            <div class="card-body">
+              <span class="product-brand">Samsung</span>
+              <h6 class="card-title mt-1 mb-2">Galaxy S24 Ultra</h6>
+              <span class="product-category">Smartphones</span>
+              <div class="mt-2"><span class="product-price">&#8377;1,29,999</span></div>
+              <div class="mt-1"><small class="text-success"><i class="bi bi-check-circle-fill"></i> In Stock</small></div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <a routerLink="/products/2" class="text-decoration-none text-dark">
+          <div class="card product-card h-100">
+            <div class="card-img-top">&#128187;</div>
+            <div class="card-body">
+              <span class="product-brand">Apple</span>
+              <h6 class="card-title mt-1 mb-2">MacBook Air M3</h6>
+              <span class="product-category">Laptops</span>
+              <div class="mt-2"><span class="product-price">&#8377;1,14,900</span></div>
+              <div class="mt-1"><small class="text-success"><i class="bi bi-check-circle-fill"></i> In Stock</small></div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <a routerLink="/products/3" class="text-decoration-none text-dark">
+          <div class="card product-card h-100">
+            <div class="card-img-top">&#127911;</div>
+            <div class="card-body">
+              <span class="product-brand">Sony</span>
+              <h6 class="card-title mt-1 mb-2">WH-1000XM5</h6>
+              <span class="product-category">Headphones</span>
+              <div class="mt-2"><span class="product-price">&#8377;29,990</span></div>
+              <div class="mt-1"><small class="text-success"><i class="bi bi-check-circle-fill"></i> In Stock</small></div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <a routerLink="/products/4" class="text-decoration-none text-dark">
+          <div class="card product-card h-100">
+            <div class="card-img-top">&#128187;</div>
+            <div class="card-body">
+              <span class="product-brand">Dell</span>
+              <h6 class="card-title mt-1 mb-2">XPS 15</h6>
+              <span class="product-category">Laptops</span>
+              <div class="mt-2"><span class="product-price">&#8377;1,49,990</span></div>
+              <div class="mt-1"><small class="text-success"><i class="bi bi-check-circle-fill"></i> In Stock</small></div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Shop With Us -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center d-block">Why Shop With Us?</h2>
+    <div class="row g-4 text-center mt-2">
+      <div class="col-md-4">
+        <div class="card border-0 p-4">
+          <div class="mb-3"><i class="bi bi-truck fs-1 text-primary"></i></div>
+          <h5>Free Shipping</h5>
+          <p class="text-muted mb-0">Free delivery on orders above &#8377;999. Fast and reliable shipping across India.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-0 p-4">
+          <div class="mb-3"><i class="bi bi-shield-check fs-1 text-primary"></i></div>
+          <h5>Secure Payments</h5>
+          <p class="text-muted mb-0">100% secure payment methods. Your data is protected with encryption.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-0 p-4">
+          <div class="mb-3"><i class="bi bi-arrow-repeat fs-1 text-primary"></i></div>
+          <h5>Easy Returns</h5>
+          <p class="text-muted mb-0">Hassle-free returns within 30 days. No questions asked.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

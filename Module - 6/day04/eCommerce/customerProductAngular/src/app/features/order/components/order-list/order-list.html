@@ -1,0 +1,65 @@
+<!-- Breadcrumb -->
+<div class="container mt-3">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item active">My Orders</li>
+    </ol>
+  </nav>
+</div>
+
+<div class="container pb-5">
+  <h2 class="fw-bold mb-4"><i class="bi bi-box-seam me-2"></i>My Orders</h2>
+
+  <!-- Order Stats -->
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+      <div class="card border-0 shadow-sm text-center p-3">
+        <h3 class="fw-bold text-primary mb-0">{{ orders().length }}</h3>
+        <small class="text-muted">Total Orders</small>
+      </div>
+    </div>
+  </div>
+
+  @if (orders().length === 0) {
+    <div class="empty-state">
+      <div class="empty-icon">&#128230;</div>
+      <h5>No orders yet</h5>
+      <p class="text-muted">Place your first order from our products.</p>
+      <a routerLink="/products" class="btn btn-primary mt-2">Browse Products</a>
+    </div>
+  }
+
+  @for (order of orders(); track order.order_id) {
+    <div class="card order-card mb-3">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-md-2">
+            <small class="text-muted">Order ID</small>
+            <h6 class="fw-bold mb-0">#{{ order.order_id }}</h6>
+          </div>
+          <div class="col-md-2">
+            <small class="text-muted">Date</small>
+            <h6 class="mb-0">{{ order.orderDate }}</h6>
+          </div>
+          <div class="col-md-3">
+            <small class="text-muted">Customer</small>
+            <h6 class="mb-0">{{ order.customerSummaryDTO.fName }} {{ order.customerSummaryDTO.lName }}</h6>
+          </div>
+          <div class="col-md-2">
+            <small class="text-muted">Items</small>
+            <h6 class="mb-0">{{ order.orderItems.length }} item(s)</h6>
+          </div>
+          <div class="col-md-3 text-end mt-2 mt-md-0">
+            <a [routerLink]="['/orders', order.order_id]" class="btn btn-outline-primary btn-sm me-1">
+              <i class="bi bi-eye me-1"></i>View
+            </a>
+            <button class="btn btn-outline-danger btn-sm" (click)="cancelOrder(order.order_id)">
+              <i class="bi bi-x-circle me-1"></i>Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

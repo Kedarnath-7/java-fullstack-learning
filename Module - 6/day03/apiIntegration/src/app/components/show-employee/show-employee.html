@@ -1,0 +1,28 @@
+<tr>
+    <td>{{employee.id}}</td>
+    <td>{{employee.name}}</td>
+    <td>{{employee.dept}}</td>
+    <td>
+        @if(employee.projects.length > 0) {
+            <ul class="mb-0 ps-3">
+                @for (project of employee.projects; track project.id) {
+                    <li>{{project.id}} - ({{project.name}})</li>
+                }
+            </ul>
+        } @else {
+            <span class="text-muted">No projects assigned</span>
+        }
+    </td>
+    <td>
+        <button class="btn btn-sm btn-outline-danger" [disabled]="status().loading" (click)="remove()">
+            @if(status().loading) {
+                Deleting...
+            } @else {
+                Remove
+            }
+        </button>
+        @if(status().error) {
+            <div class="text-danger small mt-1">{{ status().error }}</div>
+        }
+    </td>
+</tr>

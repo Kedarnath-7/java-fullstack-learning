@@ -1,0 +1,141 @@
+<div class="container-fluid px-4 py-4">
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/admin/dashboard" class="text-decoration-none">Dashboard</a></li>
+      <li class="breadcrumb-item active">All Loans</li>
+    </ol>
+  </nav>
+
+  <div class="card border-0 shadow-sm">
+    <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+      <h5 class="fw-bold mb-0"><i class="bi bi-file-earmark-text me-2"></i>All Loan Accounts</h5>
+      <select class="form-select form-select-sm" style="width: auto;">
+        <option value="">All Statuses</option>
+        <option>PENDING</option>
+        <option>ACTIVE</option>
+        <option>REJECTED</option>
+        <option>CLOSED</option>
+        <option>OVERDUE</option>
+      </select>
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Loan ID</th>
+              <th>Customer</th>
+              <th>Product</th>
+              <th>Type</th>
+              <th>Amount</th>
+              <th>EMI</th>
+              <th>Start Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>#1001</strong></td>
+              <td>Rahul Sharma</td>
+              <td>LP001</td>
+              <td><span class="badge bg-light text-dark border">HOME</span></td>
+              <td>₹15,00,000</td>
+              <td>₹25,000</td>
+              <td>2026-01-15</td>
+              <td><span class="badge badge-active">ACTIVE</span></td>
+              <td>
+                <a routerLink="/customer/loan-detail/1001" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
+                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>#1002</strong></td>
+              <td>Rahul Sharma</td>
+              <td>LP002</td>
+              <td><span class="badge bg-light text-dark border">PERSONAL</span></td>
+              <td>₹2,00,000</td>
+              <td>₹8,500</td>
+              <td>2026-07-01</td>
+              <td><span class="badge badge-pending">PENDING</span></td>
+              <td>
+                <a routerLink="/customer/loan-detail/1002" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
+                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>#1003</strong></td>
+              <td>Rahul Sharma</td>
+              <td>LP003</td>
+              <td><span class="badge bg-light text-dark border">EDUCATION</span></td>
+              <td>₹1,50,000</td>
+              <td>₹6,200</td>
+              <td>2025-06-01</td>
+              <td><span class="badge badge-closed">CLOSED</span></td>
+              <td>
+                <a routerLink="/customer/loan-detail/1003" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
+                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>#1004</strong></td>
+              <td>Rahul Sharma</td>
+              <td>LP001</td>
+              <td><span class="badge bg-light text-dark border">HOME</span></td>
+              <td>₹25,00,000</td>
+              <td>₹42,000</td>
+              <td>2026-03-10</td>
+              <td><span class="badge badge-overdue">OVERDUE</span></td>
+              <td>
+                <a routerLink="/customer/loan-detail/1004" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
+                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>#1005</strong></td>
+              <td>Priya Patel</td>
+              <td>LP001</td>
+              <td><span class="badge bg-light text-dark border">HOME</span></td>
+              <td>₹12,00,000</td>
+              <td>₹20,000</td>
+              <td>2026-07-03</td>
+              <td><span class="badge badge-pending">PENDING</span></td>
+              <td>
+                <a routerLink="/customer/loan-detail/1005" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
+                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>#1006</strong></td>
+              <td>Amit Verma</td>
+              <td>LP003</td>
+              <td><span class="badge bg-light text-dark border">EDUCATION</span></td>
+              <td>₹5,00,000</td>
+              <td>₹12,000</td>
+              <td>2026-07-05</td>
+              <td><span class="badge badge-pending">PENDING</span></td>
+              <td>
+                <a routerLink="/customer/loan-detail/1006" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
+                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>#1007</strong></td>
+              <td>Sneha Reddy</td>
+              <td>LP002</td>
+              <td><span class="badge bg-light text-dark border">PERSONAL</span></td>
+              <td>₹2,50,000</td>
+              <td>₹10,500</td>
+              <td>2026-07-08</td>
+              <td><span class="badge badge-pending">PENDING</span></td>
+              <td>
+                <a routerLink="/customer/loan-detail/1007" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
+                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
