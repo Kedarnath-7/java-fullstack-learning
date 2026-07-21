@@ -11,9 +11,17 @@ export interface OrderRequestDTO {
   orderItems: OrderItemRequestDTO[];
 }
 
+export interface ProductSummaryDTO {
+  product_id: number;
+  name: string;
+  brand: string;
+  cost: number;
+}
+
 export interface OrderItemSummaryDTO {
   id: number;
   quantity: number;
+  product: ProductSummaryDTO;
 }
 
 export interface OrderResponseDTO {

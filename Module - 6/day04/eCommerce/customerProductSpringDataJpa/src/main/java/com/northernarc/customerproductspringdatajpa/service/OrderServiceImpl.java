@@ -5,6 +5,7 @@ import com.northernarc.customerproductspringdatajpa.dto.OrderItemRequestDTO;
 import com.northernarc.customerproductspringdatajpa.dto.OrderItemSummaryDTO;
 import com.northernarc.customerproductspringdatajpa.dto.OrderRequestDTO;
 import com.northernarc.customerproductspringdatajpa.dto.OrderResponseDTO;
+import com.northernarc.customerproductspringdatajpa.dto.ProductSummaryDTO;
 import com.northernarc.customerproductspringdatajpa.exceptions.CustomerNotFound;
 import com.northernarc.customerproductspringdatajpa.exceptions.OrderNotFound;
 import com.northernarc.customerproductspringdatajpa.exceptions.ProductNotFound;
@@ -54,7 +55,7 @@ public class OrderServiceImpl implements OrderService{
     }
 
     private OrderResponseDTO mapToResponse(Order order){
-        return new OrderResponseDTO(order.getOrder_id(), order.getOrderDate(), mapToCustomerSummary(order.getCustomer()), order.getOrderItemList().stream().map((orderItem)-> new OrderItemSummaryDTO(orderItem.getId(), orderItem.getQuantity())).toList());
+        return new OrderResponseDTO(order.getOrder_id(), order.getOrderDate(), mapToCustomerSummary(order.getCustomer()), order.getOrderItemList().stream().map((orderItem)-> new OrderItemSummaryDTO(orderItem.getId(), orderItem.getQuantity(), new ProductSummaryDTO(orderItem.getProduct().getProduct_id(), orderItem.getProduct().getName(), orderItem.getProduct().getBrand(), orderItem.getProduct().getCost().doubleValue()))).toList());
     }
 
     private CustomerSummaryDTO mapToCustomerSummary(Customer customer){

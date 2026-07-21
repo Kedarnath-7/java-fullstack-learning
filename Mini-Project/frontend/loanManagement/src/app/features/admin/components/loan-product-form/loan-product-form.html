@@ -1,51 +1,20 @@
 <div class="container py-4">
-  <nav aria-label="breadcrumb" class="mb-4">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin/dashboard" class="text-decoration-none">Dashboard</a></li>
-      <li class="breadcrumb-item"><a routerLink="/admin/loan-products" class="text-decoration-none">Loan Products</a></li>
-      <li class="breadcrumb-item active">Add Product</li>
-    </ol>
-  </nav>
-
+  <nav aria-label="breadcrumb" class="mb-4"><ol class="breadcrumb"><li class="breadcrumb-item"><a routerLink="/admin/dashboard" class="text-decoration-none">Dashboard</a></li><li class="breadcrumb-item"><a routerLink="/admin/loan-products" class="text-decoration-none">Products</a></li><li class="breadcrumb-item active">{{ isEdit() ? 'Edit' : 'Add' }}</li></ol></nav>
   <div class="row justify-content-center">
     <div class="col-lg-6">
       <div class="card border-0 shadow-sm">
-        <div class="card-header bg-primary text-white py-3">
-          <h5 class="fw-bold mb-0"><i class="bi bi-box me-2"></i>Add Loan Product</h5>
-        </div>
+        <div class="card-header bg-primary text-white py-3"><h5 class="fw-bold mb-0"><i class="bi bi-box me-2"></i>{{ isEdit() ? 'Edit' : 'Add' }} Loan Product</h5></div>
         <div class="card-body p-4">
-          <!-- LoanProductRequestDTO fields -->
-          <form>
-            <div class="mb-3">
-              <label class="form-label">Loan Code <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" placeholder="e.g., LP006" maxlength="20">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Loan Name <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" placeholder="e.g., Gold Loan">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Loan Type <span class="text-danger">*</span></label>
-              <select class="form-select">
-                <option value="">Select Type</option>
-                <option value="HOME">HOME</option>
-                <option value="PERSONAL">PERSONAL</option>
-                <option value="EDUCATION">EDUCATION</option>
-                <option value="VEHICLE">VEHICLE</option>
-                <option value="BUSINESS">BUSINESS</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Interest Rate (%) <span class="text-danger">*</span></label>
-              <input type="number" class="form-control" step="0.1" min="0.1" placeholder="e.g., 9.5">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Daily Penalty Rate (%) <span class="text-danger">*</span></label>
-              <input type="number" class="form-control" step="0.01" min="0" placeholder="e.g., 0.05">
-            </div>
+          @if (error()) { <div class="alert alert-danger small"><i class="bi bi-exclamation-circle me-1"></i>{{ error() }}</div> }
+          <form (ngSubmit)="onSubmit()" #prodForm="ngForm">
+            <div class="mb-3"><label class="form-label">Loan Code *</label><input type="text" class="form-control" name="loanCode" [(ngModel)]="form.loanCode" required maxlength="20" [readonly]="isEdit()"></div>
+            <div class="mb-3"><label class="form-label">Loan Name *</label><input type="text" class="form-control" name="loanName" [(ngModel)]="form.loanName" required minlength="2"></div>
+            <div class="mb-3"><label class="form-label">Loan Type *</label><select class="form-select" name="loanType" [(ngModel)]="form.loanType" required><option value="">Select</option><option>HOME</option><option>PERSONAL</option><option>EDUCATION</option><option>VEHICLE</option><option>BUSINESS</option></select></div>
+            <div class="mb-3"><label class="form-label">Interest Rate (%) *</label><input type="number" class="form-control" name="interestRate" [(ngModel)]="form.interestRate" required min="0.1" step="0.1"></div>
+            <div class="mb-3"><label class="form-label">Daily Penalty Rate (%) *</label><input type="number" class="form-control" name="dailyPenaltyRate" [(ngModel)]="form.dailyPenaltyRate" required min="0" step="0.01"></div>
             <div class="d-flex gap-2">
-              <button type="submit" class="btn btn-primary px-4">
-                <i class="bi bi-plus-circle me-2"></i>Create Product
+              <button type="submit" class="btn btn-primary px-4" [disabled]="prodForm.invalid || loading()">
+                @if (loading()) { <span class="spinner-border spinner-border-sm me-2"></span>Saving... } @else { <i class="bi bi-check-circle me-2"></i>{{ isEdit() ? 'Update' : 'Create' }} }
               </button>
               <a routerLink="/admin/loan-products" class="btn btn-outline-secondary px-4">Cancel</a>
             </div>

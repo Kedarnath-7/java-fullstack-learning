@@ -4,32 +4,41 @@
       <div class="card shadow-sm border-0">
         <div class="card-body p-4">
           <div class="text-center mb-4">
-            <i class="bi bi-person-circle fs-1 text-primary"></i>
+            <img src="logo_withOutBGColorLightMode.png" alt="NorthernArc" height="48" class="mb-3 logo-light">
+            <img src="logo_withOutBGColorDarkMode.png" alt="NorthernArc" height="48" class="mb-3 logo-dark">
             <h4 class="fw-bold mt-2">Welcome Back</h4>
             <p class="text-muted small">Sign in to your account</p>
           </div>
 
-          <form>
+          @if (auth.error()) {
+            <div class="alert alert-danger small py-2">
+              <i class="bi bi-exclamation-circle me-1"></i>{{ auth.error() }}
+            </div>
+          }
+
+          <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
             <div class="mb-3">
               <label for="email" class="form-label">Email Address</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                <input type="email" class="form-control" id="email" placeholder="your&#64;email.com">
+                <input type="email" class="form-control" id="email" name="email"
+                  [(ngModel)]="email" required email placeholder="your@email.com">
               </div>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                <input type="password" class="form-control" id="password" placeholder="Enter password">
+                <input type="password" class="form-control" id="password" name="password"
+                  [(ngModel)]="password" required minlength="8" placeholder="Enter password">
               </div>
             </div>
-            <div class="form-check mb-3">
-              <input class="form-check-input" type="checkbox" id="rememberMe">
-              <label class="form-check-label small" for="rememberMe">Remember me</label>
-            </div>
-            <button type="submit" class="btn btn-primary w-100 mb-3">
-              <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+            <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="loginForm.invalid || auth.loading()">
+              @if (auth.loading()) {
+                <span class="spinner-border spinner-border-sm me-2"></span>Signing in...
+              } @else {
+                <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+              }
             </button>
           </form>
 
@@ -37,22 +46,21 @@
             <p class="small text-muted mb-0">Don't have an account? <a routerLink="/auth/register" class="text-decoration-none">Register</a></p>
           </div>
 
-          <!-- Demo Credentials -->
           <hr>
           <div class="small">
             <p class="fw-bold text-muted mb-2">Demo Credentials:</p>
             <div class="d-flex flex-column gap-1">
-              <button class="btn btn-outline-secondary btn-sm text-start">
-                <i class="bi bi-person-fill-gear me-1"></i>Admin &mdash; admin&#64;northernarc.com
+              <button class="btn btn-outline-secondary btn-sm text-start" (click)="fillCredentials('admin@northernarc.com','Admin@123')">
+                <i class="bi bi-person-fill-gear me-1"></i>Admin
               </button>
-              <button class="btn btn-outline-secondary btn-sm text-start">
-                <i class="bi bi-person-fill-lock me-1"></i>Manager &mdash; manager&#64;northernarc.com
+              <button class="btn btn-outline-secondary btn-sm text-start" (click)="fillCredentials('manager@northernarc.com','Manager@123')">
+                <i class="bi bi-person-fill-lock me-1"></i>Manager
               </button>
-              <button class="btn btn-outline-secondary btn-sm text-start">
-                <i class="bi bi-clipboard-check me-1"></i>Underwriter &mdash; underwriter&#64;northernarc.com
+              <button class="btn btn-outline-secondary btn-sm text-start" (click)="fillCredentials('underwriter@northernarc.com','Underwriter@123')">
+                <i class="bi bi-clipboard-check me-1"></i>Underwriter
               </button>
-              <button class="btn btn-outline-secondary btn-sm text-start">
-                <i class="bi bi-person me-1"></i>Customer &mdash; rahul.sharma&#64;northernarc.com
+              <button class="btn btn-outline-secondary btn-sm text-start" (click)="fillCredentials('rahul.sharma@northernarc.com','password123')">
+                <i class="bi bi-person me-1"></i>Customer (Rahul)
               </button>
             </div>
           </div>

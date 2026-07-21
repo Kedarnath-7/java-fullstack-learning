@@ -1,101 +1,21 @@
 <div class="container-fluid px-4 py-4">
   <h4 class="fw-bold mb-4"><i class="bi bi-speedometer2 me-2"></i>Admin Dashboard</h4>
-
-  <!-- Dashboard Stats (DashboardDTO) -->
-  <div class="row g-3 mb-4">
-    <div class="col-md-2">
-      <div class="card border-0 shadow-sm stat-card" style="border-left-color: var(--bs-primary) !important;">
-        <div class="card-body text-center">
-          <i class="bi bi-people fs-3 text-primary"></i>
-          <h4 class="fw-bold mb-0 mt-2">156</h4>
-          <p class="text-muted small mb-0">Total Customers</p>
-        </div>
-      </div>
+  @if (dashboardService.loading()) {
+    <app-loading message="Loading dashboard..." />
+  } @else if (dashboardService.data(); as d) {
+    <div class="row g-3 mb-4">
+      <div class="col-md-2"><div class="card border-0 shadow-sm stat-card" style="border-left-color:var(--bs-primary)!important"><div class="card-body text-center"><i class="bi bi-people fs-3 text-primary"></i><h4 class="fw-bold mt-2 mb-0">{{ d.totalCustomers }}</h4><p class="text-muted small mb-0">Customers</p></div></div></div>
+      <div class="col-md-2"><div class="card border-0 shadow-sm stat-card" style="border-left-color:var(--bs-success)!important"><div class="card-body text-center"><i class="bi bi-file-earmark-text fs-3 text-success"></i><h4 class="fw-bold mt-2 mb-0">{{ d.totalLoans }}</h4><p class="text-muted small mb-0">Loans</p></div></div></div>
+      <div class="col-md-2"><div class="card border-0 shadow-sm stat-card" style="border-left-color:var(--bs-info)!important"><div class="card-body text-center"><i class="bi bi-currency-rupee fs-3 text-info"></i><h4 class="fw-bold mt-2 mb-0">{{ d.totalLoanAmountDisbursed | currency:'INR':'symbol':'1.0-0' }}</h4><p class="text-muted small mb-0">Disbursed</p></div></div></div>
+      <div class="col-md-2"><div class="card border-0 shadow-sm stat-card" style="border-left-color:var(--bs-danger)!important"><div class="card-body text-center"><i class="bi bi-exclamation-triangle fs-3 text-danger"></i><h4 class="fw-bold mt-2 mb-0">{{ d.totalPenaltyCollected | currency:'INR':'symbol':'1.0-0' }}</h4><p class="text-muted small mb-0">Penalty</p></div></div></div>
+      <div class="col-md-2"><div class="card border-0 shadow-sm stat-card" style="border-left-color:var(--bs-warning)!important"><div class="card-body text-center"><i class="bi bi-building fs-3 text-warning"></i><h4 class="fw-bold mt-2 mb-0" style="font-size:1rem">{{ d.topBranch }}</h4><p class="text-muted small mb-0">Top Branch</p></div></div></div>
+      <div class="col-md-2"><div class="card border-0 shadow-sm stat-card" style="border-left-color:var(--bs-primary)!important"><div class="card-body text-center"><i class="bi bi-trophy fs-3 text-primary"></i><h4 class="fw-bold mt-2 mb-0" style="font-size:1rem">{{ d.highestLoanCustomer }}</h4><p class="text-muted small mb-0">Top Customer</p></div></div></div>
     </div>
-    <div class="col-md-2">
-      <div class="card border-0 shadow-sm stat-card" style="border-left-color: var(--bs-success) !important;">
-        <div class="card-body text-center">
-          <i class="bi bi-file-earmark-text fs-3 text-success"></i>
-          <h4 class="fw-bold mb-0 mt-2">342</h4>
-          <p class="text-muted small mb-0">Total Loans</p>
-        </div>
-      </div>
+    <div class="row g-3">
+      <div class="col-md-3"><a routerLink="/admin/customers" class="text-decoration-none"><div class="card border-0 shadow-sm text-center p-4 card-hover"><i class="bi bi-people fs-1 text-primary mb-2"></i><h6 class="fw-bold text-dark">Customers</h6></div></a></div>
+      <div class="col-md-3"><a routerLink="/admin/loan-products" class="text-decoration-none"><div class="card border-0 shadow-sm text-center p-4 card-hover"><i class="bi bi-box fs-1 text-success mb-2"></i><h6 class="fw-bold text-dark">Loan Products</h6></div></a></div>
+      <div class="col-md-3"><a routerLink="/admin/all-loans" class="text-decoration-none"><div class="card border-0 shadow-sm text-center p-4 card-hover"><i class="bi bi-file-earmark-text fs-1 text-info mb-2"></i><h6 class="fw-bold text-dark">All Loans</h6></div></a></div>
+      <div class="col-md-3"><a routerLink="/underwriter/dashboard" class="text-decoration-none"><div class="card border-0 shadow-sm text-center p-4 card-hover"><i class="bi bi-clipboard-check fs-1 text-warning mb-2"></i><h6 class="fw-bold text-dark">Applications</h6></div></a></div>
     </div>
-    <div class="col-md-2">
-      <div class="card border-0 shadow-sm stat-card" style="border-left-color: var(--bs-info) !important;">
-        <div class="card-body text-center">
-          <i class="bi bi-currency-rupee fs-3 text-info"></i>
-          <h4 class="fw-bold mb-0 mt-2">₹12.5Cr</h4>
-          <p class="text-muted small mb-0">Total Disbursed</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="card border-0 shadow-sm stat-card" style="border-left-color: var(--bs-danger) !important;">
-        <div class="card-body text-center">
-          <i class="bi bi-exclamation-triangle fs-3 text-danger"></i>
-          <h4 class="fw-bold mb-0 mt-2">₹4.8L</h4>
-          <p class="text-muted small mb-0">Penalty Collected</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="card border-0 shadow-sm stat-card" style="border-left-color: var(--bs-warning) !important;">
-        <div class="card-body text-center">
-          <i class="bi bi-building fs-3 text-warning"></i>
-          <h4 class="fw-bold mb-0 mt-2">Bangalore</h4>
-          <p class="text-muted small mb-0">Top Branch</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="card border-0 shadow-sm stat-card" style="border-left-color: var(--bs-primary) !important;">
-        <div class="card-body text-center">
-          <i class="bi bi-trophy fs-3 text-primary"></i>
-          <h4 class="fw-bold mb-0 mt-2" style="font-size:1rem;">Rahul Sharma</h4>
-          <p class="text-muted small mb-0">Highest Loan</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Quick Navigation Cards -->
-  <div class="row g-3">
-    <div class="col-md-3">
-      <a routerLink="/admin/customers" class="text-decoration-none">
-        <div class="card border-0 shadow-sm text-center p-4 card-hover">
-          <i class="bi bi-people fs-1 text-primary mb-2"></i>
-          <h6 class="fw-bold text-dark">Manage Customers</h6>
-          <p class="text-muted small mb-0">View, add, edit &amp; delete customers</p>
-        </div>
-      </a>
-    </div>
-    <div class="col-md-3">
-      <a routerLink="/admin/loan-products" class="text-decoration-none">
-        <div class="card border-0 shadow-sm text-center p-4 card-hover">
-          <i class="bi bi-box fs-1 text-success mb-2"></i>
-          <h6 class="fw-bold text-dark">Loan Products</h6>
-          <p class="text-muted small mb-0">Manage loan product catalog</p>
-        </div>
-      </a>
-    </div>
-    <div class="col-md-3">
-      <a routerLink="/admin/all-loans" class="text-decoration-none">
-        <div class="card border-0 shadow-sm text-center p-4 card-hover">
-          <i class="bi bi-file-earmark-text fs-1 text-info mb-2"></i>
-          <h6 class="fw-bold text-dark">All Loan Accounts</h6>
-          <p class="text-muted small mb-0">View &amp; manage all loans</p>
-        </div>
-      </a>
-    </div>
-    <div class="col-md-3">
-      <a routerLink="/underwriter/dashboard" class="text-decoration-none">
-        <div class="card border-0 shadow-sm text-center p-4 card-hover">
-          <i class="bi bi-clipboard-check fs-1 text-warning mb-2"></i>
-          <h6 class="fw-bold text-dark">Loan Applications</h6>
-          <p class="text-muted small mb-0">Review pending applications</p>
-        </div>
-      </a>
-    </div>
-  </div>
+  }
 </div>

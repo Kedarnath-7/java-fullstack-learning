@@ -2,8 +2,6 @@ package com.northernarc.customerproductspringdatajpa.service;
 
 import com.northernarc.customerproductspringdatajpa.dto.CustomerRequestDTO;
 import com.northernarc.customerproductspringdatajpa.dto.CustomerResponseDTO;
-import com.northernarc.customerproductspringdatajpa.model.Customer;
-
 import java.util.List;
 
 public interface CustomerService {

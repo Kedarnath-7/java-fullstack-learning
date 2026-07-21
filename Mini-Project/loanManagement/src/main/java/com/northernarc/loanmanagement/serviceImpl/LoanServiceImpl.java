@@ -1,4 +1,4 @@
-package com.northernarc.loanmanagement.serviceimpl;
+package com.northernarc.loanmanagement.serviceImpl;
 
 import com.northernarc.loanmanagement.dto.CustomerRequestDTO;
 import com.northernarc.loanmanagement.dto.CustomerResponseDTO;

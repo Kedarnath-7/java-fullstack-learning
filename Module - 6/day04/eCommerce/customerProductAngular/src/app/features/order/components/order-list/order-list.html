@@ -48,7 +48,12 @@
           </div>
           <div class="col-md-2">
             <small class="text-muted">Items</small>
-            <h6 class="mb-0">{{ order.orderItems.length }} item(s)</h6>
+            <h6 class="mb-0 text-truncate" style="max-width: 200px;">
+              {{ order.orderItems.length }} &mdash;
+              @for (item of order.orderItems; track item.id; let last = $last) {
+                {{ item.product.name }}{{ last ? '' : ', ' }}
+              }
+            </h6>
           </div>
           <div class="col-md-3 text-end mt-2 mt-md-0">
             <a [routerLink]="['/orders', order.order_id]" class="btn btn-outline-primary btn-sm me-1">

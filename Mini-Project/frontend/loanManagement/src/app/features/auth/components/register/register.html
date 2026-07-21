@@ -4,65 +4,57 @@
       <div class="card shadow-sm border-0">
         <div class="card-body p-4">
           <div class="text-center mb-4">
-            <i class="bi bi-person-plus-fill fs-1 text-primary"></i>
+            <img src="logo_withOutBGColorLightMode.png" alt="NorthernArc" height="48" class="mb-3 logo-light">
+            <img src="logo_withOutBGColorDarkMode.png" alt="NorthernArc" height="48" class="mb-3 logo-dark">
             <h4 class="fw-bold mt-2">Create Account</h4>
             <p class="text-muted small">Register to start your loan journey</p>
           </div>
 
-          <form>
+          @if (error()) {
+            <div class="alert alert-danger small py-2"><i class="bi bi-exclamation-circle me-1"></i>{{ error() }}</div>
+          }
+          @if (success()) {
+            <div class="alert alert-success small py-2"><i class="bi bi-check-circle me-1"></i>Registration successful! Redirecting to login...</div>
+          }
+
+          <form (ngSubmit)="onSubmit()" #regForm="ngForm">
             <div class="mb-3">
-              <label for="customerName" class="form-label">Full Name</label>
-              <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" id="customerName" placeholder="Enter full name">
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email Address</label>
-              <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                <input type="email" class="form-control" id="email" placeholder="your&#64;email.com">
-              </div>
+              <label class="form-label">Full Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="customerName" [(ngModel)]="form.customerName" required minlength="2" maxlength="100" placeholder="Enter full name">
             </div>
             <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                <input type="password" class="form-control" id="password" placeholder="Min 8 characters">
-              </div>
+              <label class="form-label">Email <span class="text-danger">*</span></label>
+              <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email placeholder="your@email.com">
             </div>
             <div class="mb-3">
-              <label for="confirmPassword" class="form-label">Confirm Password</label>
-              <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Re-enter password">
-              </div>
+              <label class="form-label">Password <span class="text-danger">*</span></label>
+              <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="8" placeholder="Min 8 characters">
             </div>
             <div class="mb-3">
-              <label for="branch" class="form-label">Branch</label>
-              <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-building"></i></span>
-                <select class="form-select" id="branch">
-                  <option value="">Select Branch</option>
-                  <option>Bangalore</option>
-                  <option>Mumbai</option>
-                  <option>Delhi</option>
-                  <option>Chennai</option>
-                  <option>Hyderabad</option>
-                  <option>Kolkata</option>
-                  <option>Pune</option>
-                </select>
-              </div>
+              <label class="form-label">Confirm Password <span class="text-danger">*</span></label>
+              <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="form.confirmPassword" required placeholder="Re-enter password">
             </div>
-            <div class="form-check mb-3">
-              <input class="form-check-input" type="checkbox" id="terms">
-              <label class="form-check-label small" for="terms">I agree to the Terms &amp; Conditions</label>
+            <div class="mb-3">
+              <label class="form-label">Branch <span class="text-danger">*</span></label>
+              <select class="form-select" name="branch" [(ngModel)]="form.branch" required>
+                <option value="">Select Branch</option>
+                <option>Bangalore</option>
+                <option>Mumbai</option>
+                <option>Delhi</option>
+                <option>Chennai</option>
+                <option>Hyderabad</option>
+                <option>Kolkata</option>
+                <option>Pune</option>
+              </select>
             </div>
-            <button type="submit" class="btn btn-primary w-100 mb-3">
-              <i class="bi bi-person-plus me-2"></i>Create Account
+            <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="regForm.invalid || loading()">
+              @if (loading()) {
+                <span class="spinner-border spinner-border-sm me-2"></span>Creating...
+              } @else {
+                <i class="bi bi-person-plus me-2"></i>Create Account
+              }
             </button>
           </form>
-
           <div class="text-center">
             <p class="small text-muted mb-0">Already have an account? <a routerLink="/auth/login" class="text-decoration-none">Sign In</a></p>
           </div>

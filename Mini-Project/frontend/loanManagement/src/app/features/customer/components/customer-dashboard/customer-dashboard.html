@@ -1,186 +1,99 @@
 <div class="container-fluid px-4 py-4">
-  <!-- Welcome Banner -->
-  <div class="row mb-4">
-    <div class="col-12">
-      <div class="bg-primary text-white rounded-3 p-4">
-        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-          <div>
-            <h4 class="fw-bold mb-1">Welcome back, Rahul Sharma!</h4>
-            <p class="mb-0 opacity-75">Branch: Bangalore | Customer ID: 4</p>
-          </div>
-          <a routerLink="/customer/apply-loan" class="btn btn-light">
-            <i class="bi bi-plus-circle me-2"></i>New Loan Application
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Summary Cards (CustomerSummaryDTO) -->
-  <div class="row g-3 mb-4">
-    <div class="col-md-3">
-      <div class="card border-0 shadow-sm stat-card" style="border-left-color: var(--bs-primary) !important;">
-        <div class="card-body">
-          <div class="d-flex justify-content-between">
+  @if (loanService.loading()) {
+    <app-loading message="Loading dashboard..." />
+  } @else {
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="rounded-3 p-4" style="background-color: var(--na-jet-black); color: white;">
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
             <div>
-              <p class="text-muted small mb-1">Total Loans</p>
-              <h4 class="fw-bold mb-0">3</h4>
+              <h4 class="fw-bold mb-1">Welcome back, {{ auth.currentUser()?.customerName }}!</h4>
+              <p class="mb-0" style="color:var(--na-cool-grey);">Branch: {{ auth.currentUser()?.branch }} | ID: {{ auth.currentUser()?.customerId }}</p>
             </div>
-            <i class="bi bi-file-earmark-text fs-2 text-primary opacity-50"></i>
+            <a routerLink="/customer/apply-loan" class="btn btn-primary"><i class="bi bi-plus-circle me-2"></i>New Loan</a>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="card border-0 shadow-sm stat-card" style="border-left-color: var(--bs-success) !important;">
-        <div class="card-body">
-          <div class="d-flex justify-content-between">
-            <div>
-              <p class="text-muted small mb-1">Total Loan Amount</p>
-              <h4 class="fw-bold mb-0">₹18,50,000</h4>
+    <div class="row g-3 mb-4">
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm stat-card" style="border-left-color: var(--bs-primary) !important;">
+          <div class="card-body">
+            <p class="text-muted small mb-1">Total Loans</p>
+            <h4 class="fw-bold mb-0">{{ customerService.customerSummary()?.numberOfLoans ?? 0 }}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm stat-card" style="border-left-color: var(--bs-success) !important;">
+          <div class="card-body">
+            <p class="text-muted small mb-1">Total Loan Amount</p>
+            <h4 class="fw-bold mb-0">{{ customerService.customerSummary()?.totalLoanAmount | currency:'INR':'symbol':'1.0-0' }}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm stat-card" style="border-left-color: var(--bs-warning) !important;">
+          <div class="card-body">
+            <p class="text-muted small mb-1">Active Loans</p>
+            <h4 class="fw-bold mb-0">{{ activeCount() }}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm stat-card" style="border-left-color: var(--bs-danger) !important;">
+          <div class="card-body">
+            <p class="text-muted small mb-1">Total Penalty</p>
+            <h4 class="fw-bold mb-0">{{ customerService.customerSummary()?.totalPenaltyPaid | currency:'INR':'symbol':'1.0-0' }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+            <h6 class="fw-bold mb-0">My Loan Accounts</h6>
+            <a routerLink="/customer/my-loans" class="btn btn-sm btn-outline-primary">View All</a>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead class="table-light">
+                  <tr><th>ID</th><th>Product</th><th>Amount</th><th>EMI</th><th>Status</th><th></th></tr>
+                </thead>
+                <tbody>
+                  @for (loan of recentLoans(); track loan.loanAccountId) {
+                    <tr>
+                      <td><strong>#{{ loan.loanAccountId }}</strong></td>
+                      <td>{{ loan.loanCode }} - {{ loan.loanType }}</td>
+                      <td>{{ loan.loanAmount | currency:'INR':'symbol':'1.0-0' }}</td>
+                      <td>{{ loan.emiAmount | currency:'INR':'symbol':'1.0-0' }}</td>
+                      <td><span class="badge" [class]="'badge-' + loan.loanStatus.toLowerCase()">{{ loan.loanStatus }}</span></td>
+                      <td><a [routerLink]="['/customer/loan-detail', loan.loanAccountId]" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i></a></td>
+                    </tr>
+                  } @empty {
+                    <tr><td colspan="6" class="text-center text-muted py-3">No loans found</td></tr>
+                  }
+                </tbody>
+              </table>
             </div>
-            <i class="bi bi-currency-rupee fs-2 text-success opacity-50"></i>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card border-0 shadow-sm stat-card" style="border-left-color: var(--bs-warning) !important;">
-        <div class="card-body">
-          <div class="d-flex justify-content-between">
-            <div>
-              <p class="text-muted small mb-1">Active Loans</p>
-              <h4 class="fw-bold mb-0">1</h4>
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-white py-3"><h6 class="fw-bold mb-0">Quick Actions</h6></div>
+          <div class="card-body">
+            <div class="d-grid gap-2">
+              <a routerLink="/customer/apply-loan" class="btn btn-outline-primary text-start"><i class="bi bi-plus-circle me-2"></i>Apply for Loan</a>
+              <a routerLink="/customer/make-payment" class="btn btn-outline-success text-start"><i class="bi bi-credit-card me-2"></i>Make EMI Payment</a>
+              <a routerLink="/customer/my-loans" class="btn btn-outline-info text-start"><i class="bi bi-search me-2"></i>Search My Loans</a>
+              <a routerLink="/loan-products" class="btn btn-outline-secondary text-start"><i class="bi bi-list-ul me-2"></i>Loan Products</a>
             </div>
-            <i class="bi bi-clock-history fs-2 text-warning opacity-50"></i>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="card border-0 shadow-sm stat-card" style="border-left-color: var(--bs-danger) !important;">
-        <div class="card-body">
-          <div class="d-flex justify-content-between">
-            <div>
-              <p class="text-muted small mb-1">Total Penalty Paid</p>
-              <h4 class="fw-bold mb-0">₹1,250</h4>
-            </div>
-            <i class="bi bi-exclamation-triangle fs-2 text-danger opacity-50"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Recent Loans & Quick Actions -->
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="card border-0 shadow-sm">
-        <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
-          <h6 class="fw-bold mb-0">My Loan Accounts</h6>
-          <a routerLink="/customer/my-loans" class="btn btn-sm btn-outline-primary">View All</a>
-        </div>
-        <div class="card-body p-0">
-          <div class="table-responsive">
-            <table class="table table-hover mb-0">
-              <thead class="table-light">
-                <tr>
-                  <th>Loan ID</th>
-                  <th>Product</th>
-                  <th>Amount</th>
-                  <th>EMI</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>#1001</strong></td>
-                  <td>
-                    <span class="d-block">Home Loan</span>
-                    <small class="text-muted">LP001</small>
-                  </td>
-                  <td>₹15,00,000</td>
-                  <td>₹25,000</td>
-                  <td><span class="badge badge-active">ACTIVE</span></td>
-                  <td><a routerLink="/customer/loan-detail/1001" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i></a></td>
-                </tr>
-                <tr>
-                  <td><strong>#1002</strong></td>
-                  <td>
-                    <span class="d-block">Personal Loan</span>
-                    <small class="text-muted">LP002</small>
-                  </td>
-                  <td>₹2,00,000</td>
-                  <td>₹8,500</td>
-                  <td><span class="badge badge-pending">PENDING</span></td>
-                  <td><a routerLink="/customer/loan-detail/1002" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i></a></td>
-                </tr>
-                <tr>
-                  <td><strong>#1003</strong></td>
-                  <td>
-                    <span class="d-block">Education Loan</span>
-                    <small class="text-muted">LP003</small>
-                  </td>
-                  <td>₹1,50,000</td>
-                  <td>₹6,200</td>
-                  <td><span class="badge badge-closed">CLOSED</span></td>
-                  <td><a routerLink="/customer/loan-detail/1003" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4">
-      <!-- Quick Actions -->
-      <div class="card border-0 shadow-sm mb-3">
-        <div class="card-header bg-white py-3">
-          <h6 class="fw-bold mb-0">Quick Actions</h6>
-        </div>
-        <div class="card-body">
-          <div class="d-grid gap-2">
-            <a routerLink="/customer/apply-loan" class="btn btn-outline-primary text-start">
-              <i class="bi bi-plus-circle me-2"></i>Apply for New Loan
-            </a>
-            <a routerLink="/customer/make-payment" class="btn btn-outline-success text-start">
-              <i class="bi bi-credit-card me-2"></i>Make EMI Payment
-            </a>
-            <a routerLink="/customer/my-loans" class="btn btn-outline-info text-start">
-              <i class="bi bi-search me-2"></i>Search My Loans
-            </a>
-            <a routerLink="/loan-products" class="btn btn-outline-secondary text-start">
-              <i class="bi bi-list-ul me-2"></i>Browse Loan Products
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Recent Activity -->
-      <div class="card border-0 shadow-sm">
-        <div class="card-header bg-white py-3">
-          <h6 class="fw-bold mb-0">Recent Activity</h6>
-        </div>
-        <div class="card-body">
-          <div class="timeline-item">
-            <p class="mb-1 small fw-bold">EMI Payment Made</p>
-            <p class="text-muted small mb-0">₹25,000 for Loan #1001 via UPI</p>
-            <small class="text-muted">Jul 5, 2026</small>
-          </div>
-          <div class="timeline-item">
-            <p class="mb-1 small fw-bold">Loan Application Submitted</p>
-            <p class="text-muted small mb-0">Personal Loan - ₹2,00,000</p>
-            <small class="text-muted">Jul 1, 2026</small>
-          </div>
-          <div class="timeline-item">
-            <p class="mb-1 small fw-bold">Loan Approved</p>
-            <p class="text-muted small mb-0">Home Loan #1001 approved</p>
-            <small class="text-muted">Jun 15, 2026</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  }
 </div>

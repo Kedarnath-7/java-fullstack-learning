@@ -1,167 +1,69 @@
 <div class="container-fluid px-4 py-4">
-  <!-- Breadcrumb -->
-  <nav aria-label="breadcrumb" class="mb-3">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/customer/dashboard" class="text-decoration-none">Dashboard</a></li>
-      <li class="breadcrumb-item active">My Loans</li>
-    </ol>
-  </nav>
-
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h4 class="fw-bold mb-0">My Loan Applications</h4>
-    <a routerLink="/customer/apply-loan" class="btn btn-primary btn-sm">
-      <i class="bi bi-plus-circle me-1"></i>New Application
-    </a>
+    <a routerLink="/customer/apply-loan" class="btn btn-primary btn-sm"><i class="bi bi-plus-circle me-1"></i>New Application</a>
   </div>
-
-  <!-- Search & Filter -->
   <div class="card border-0 shadow-sm mb-4">
     <div class="card-body">
       <div class="row g-3 align-items-end">
         <div class="col-md-3">
-          <label class="form-label small fw-bold">Search by Loan ID</label>
-          <div class="input-group">
-            <span class="input-group-text"><i class="bi bi-search"></i></span>
-            <input type="text" class="form-control" placeholder="e.g., 1001">
-          </div>
+          <label class="form-label small fw-bold">Search by ID</label>
+          <input type="text" class="form-control" [ngModel]="searchId()" (ngModelChange)="searchId.set($event)" placeholder="e.g. 1001">
         </div>
         <div class="col-md-3">
-          <label class="form-label small fw-bold">Filter by Status</label>
-          <select class="form-select">
-            <option value="">All Statuses</option>
-            <option>PENDING</option>
-            <option>ACTIVE</option>
-            <option>REJECTED</option>
-            <option>CLOSED</option>
-            <option>OVERDUE</option>
+          <label class="form-label small fw-bold">Status</label>
+          <select class="form-select" [ngModel]="filterStatus()" (ngModelChange)="filterStatus.set($event)">
+            <option value="">All</option>
+            <option>PENDING</option><option>ACTIVE</option><option>REJECTED</option><option>CLOSED</option><option>OVERDUE</option>
           </select>
         </div>
         <div class="col-md-3">
-          <label class="form-label small fw-bold">Filter by Loan Type</label>
-          <select class="form-select">
-            <option value="">All Types</option>
-            <option>HOME</option>
-            <option>PERSONAL</option>
-            <option>EDUCATION</option>
-            <option>VEHICLE</option>
-            <option>BUSINESS</option>
+          <label class="form-label small fw-bold">Type</label>
+          <select class="form-select" [ngModel]="filterType()" (ngModelChange)="filterType.set($event)">
+            <option value="">All</option>
+            <option>HOME</option><option>PERSONAL</option><option>EDUCATION</option><option>VEHICLE</option><option>BUSINESS</option>
           </select>
         </div>
         <div class="col-md-3">
-          <button class="btn btn-outline-secondary w-100">
-            <i class="bi bi-arrow-counterclockwise me-1"></i>Reset Filters
-          </button>
+          <button class="btn btn-outline-secondary w-100" (click)="filterStatus.set(''); filterType.set(''); searchId.set('')">Reset</button>
         </div>
       </div>
     </div>
   </div>
-
-  <p class="text-muted small mb-3">5 loan(s) found</p>
-
-  <!-- Loans Table -->
-  <div class="card border-0 shadow-sm">
-    <div class="card-body p-0">
-      <div class="table-responsive">
-        <table class="table table-hover mb-0">
-          <thead class="table-light">
-            <tr>
-              <th>Loan ID</th>
-              <th>Loan Product</th>
-              <th>Type</th>
-              <th>Amount</th>
-              <th>EMI</th>
-              <th>Start Date</th>
-              <th>EMI Due</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>#1001</strong></td>
-              <td>
-                <span class="d-block">Home Loan</span>
-                <small class="text-muted">LP001</small>
-              </td>
-              <td><span class="badge bg-light text-dark border">HOME</span></td>
-              <td>₹15,00,000</td>
-              <td>₹25,000</td>
-              <td>2026-01-15</td>
-              <td>2026-08-15</td>
-              <td><span class="badge badge-active">ACTIVE</span></td>
-              <td>
-                <a routerLink="/customer/loan-detail/1001" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
-                <a routerLink="/customer/make-payment" class="btn btn-sm btn-outline-success"><i class="bi bi-credit-card"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>#1002</strong></td>
-              <td>
-                <span class="d-block">Personal Loan</span>
-                <small class="text-muted">LP002</small>
-              </td>
-              <td><span class="badge bg-light text-dark border">PERSONAL</span></td>
-              <td>₹2,00,000</td>
-              <td>₹8,500</td>
-              <td>2026-07-01</td>
-              <td>2026-08-01</td>
-              <td><span class="badge badge-pending">PENDING</span></td>
-              <td>
-                <a routerLink="/customer/loan-detail/1002" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>#1003</strong></td>
-              <td>
-                <span class="d-block">Education Loan</span>
-                <small class="text-muted">LP003</small>
-              </td>
-              <td><span class="badge bg-light text-dark border">EDUCATION</span></td>
-              <td>₹1,50,000</td>
-              <td>₹6,200</td>
-              <td>2025-06-01</td>
-              <td>2026-06-01</td>
-              <td><span class="badge badge-closed">CLOSED</span></td>
-              <td>
-                <a routerLink="/customer/loan-detail/1003" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>#1004</strong></td>
-              <td>
-                <span class="d-block">Home Loan</span>
-                <small class="text-muted">LP001</small>
-              </td>
-              <td><span class="badge bg-light text-dark border">HOME</span></td>
-              <td>₹25,00,000</td>
-              <td>₹42,000</td>
-              <td>2026-03-10</td>
-              <td>2026-07-10</td>
-              <td><span class="badge badge-overdue">OVERDUE</span></td>
-              <td>
-                <a routerLink="/customer/loan-detail/1004" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
-                <a routerLink="/customer/make-payment" class="btn btn-sm btn-outline-success"><i class="bi bi-credit-card"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>#1005</strong></td>
-              <td>
-                <span class="d-block">Personal Loan</span>
-                <small class="text-muted">LP002</small>
-              </td>
-              <td><span class="badge bg-light text-dark border">PERSONAL</span></td>
-              <td>₹1,00,000</td>
-              <td>₹4,500</td>
-              <td>2026-07-05</td>
-              <td>2026-08-05</td>
-              <td><span class="badge badge-rejected">REJECTED</span></td>
-              <td>
-                <a routerLink="/customer/loan-detail/1005" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+  @if (loanService.loading()) {
+    <app-loading message="Loading loans..." />
+  } @else if (filteredLoans().length === 0) {
+    <app-empty-state icon="bi-file-earmark-x" title="No Loans Found" message="No loan accounts match your criteria." />
+  } @else {
+    <div class="card border-0 shadow-sm">
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead class="table-light">
+              <tr><th>ID</th><th>Product</th><th>Type</th><th>Amount</th><th>EMI</th><th>Due Date</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+              @for (loan of filteredLoans(); track loan.loanAccountId) {
+                <tr>
+                  <td><strong>#{{ loan.loanAccountId }}</strong></td>
+                  <td>{{ loan.loanCode }}</td>
+                  <td><span class="badge bg-light text-dark border">{{ loan.loanType }}</span></td>
+                  <td>{{ loan.loanAmount | currency:'INR':'symbol':'1.0-0' }}</td>
+                  <td>{{ loan.emiAmount | currency:'INR':'symbol':'1.0-0' }}</td>
+                  <td>{{ loan.emiDueDate }}</td>
+                  <td><span class="badge" [class]="'badge-' + loan.loanStatus.toLowerCase()">{{ loan.loanStatus }}</span></td>
+                  <td>
+                    <a [routerLink]="['/customer/loan-detail', loan.loanAccountId]" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
+                    @if (loan.loanStatus === 'ACTIVE' || loan.loanStatus === 'OVERDUE') {
+                      <a routerLink="/customer/make-payment" class="btn btn-sm btn-outline-success"><i class="bi bi-credit-card"></i></a>
+                    }
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
+  }
 </div>

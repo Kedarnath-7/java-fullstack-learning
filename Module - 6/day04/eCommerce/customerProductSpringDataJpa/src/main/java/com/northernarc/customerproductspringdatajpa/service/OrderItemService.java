@@ -1,6 +1,5 @@
 package com.northernarc.customerproductspringdatajpa.service;
 
-import com.northernarc.customerproductspringdatajpa.model.Order;
 import com.northernarc.customerproductspringdatajpa.model.OrderItem;
 
 import java.util.List;

@@ -2,7 +2,6 @@ package com.northernarc.customerproductspringdatajpa.service;
 
 import com.northernarc.customerproductspringdatajpa.dto.OrderRequestDTO;
 import com.northernarc.customerproductspringdatajpa.dto.OrderResponseDTO;
-import com.northernarc.customerproductspringdatajpa.model.Order;
 
 import java.util.List;
 

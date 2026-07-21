@@ -16,36 +16,39 @@ import { CustomerForm } from './features/admin/components/customer-form/customer
 import { LoanProductList } from './features/admin/components/loan-product-list/loan-product-list';
 import { LoanProductForm } from './features/admin/components/loan-product-form/loan-product-form';
 import { AllLoans } from './features/admin/components/all-loans/all-loans';
+import { Unauthorized } from './features/shared/components/unauthorized/unauthorized';
+import { authGuard, roleGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   // Public
   { path: '', component: Landing },
   { path: 'loan-products', component: LoanProducts },
+  { path: 'unauthorized', component: Unauthorized },
 
   // Auth
   { path: 'auth/login', component: Login },
   { path: 'auth/register', component: Register },
 
-  // Customer
-  { path: 'customer/dashboard', component: CustomerDashboard },
-  { path: 'customer/apply-loan', component: ApplyLoan },
-  { path: 'customer/my-loans', component: MyLoans },
-  { path: 'customer/loan-detail/:id', component: LoanDetail },
-  { path: 'customer/make-payment', component: MakePayment },
+  // Customer (USER, ADMIN, MANAGER can access)
+  { path: 'customer/dashboard', component: CustomerDashboard, canActivate: [roleGuard('USER', 'ADMIN', 'MANAGER')] },
+  { path: 'customer/apply-loan', component: ApplyLoan, canActivate: [roleGuard('USER', 'ADMIN', 'MANAGER')] },
+  { path: 'customer/my-loans', component: MyLoans, canActivate: [roleGuard('USER', 'ADMIN', 'MANAGER')] },
+  { path: 'customer/loan-detail/:id', component: LoanDetail, canActivate: [authGuard] },
+  { path: 'customer/make-payment', component: MakePayment, canActivate: [roleGuard('USER')] },
 
   // Underwriter
-  { path: 'underwriter/dashboard', component: UnderwriterDashboard },
-  { path: 'underwriter/review/:id', component: ApplicationReview },
+  { path: 'underwriter/dashboard', component: UnderwriterDashboard, canActivate: [roleGuard('UNDERWRITER')] },
+  { path: 'underwriter/review/:id', component: ApplicationReview, canActivate: [roleGuard('UNDERWRITER')] },
 
-  // Admin
-  { path: 'admin/dashboard', component: AdminDashboard },
-  { path: 'admin/customers', component: CustomerList },
-  { path: 'admin/customers/new', component: CustomerForm },
-  { path: 'admin/customers/edit/:id', component: CustomerForm },
-  { path: 'admin/loan-products', component: LoanProductList },
-  { path: 'admin/loan-products/new', component: LoanProductForm },
-  { path: 'admin/loan-products/edit/:code', component: LoanProductForm },
-  { path: 'admin/all-loans', component: AllLoans },
+  // Admin (ADMIN, MANAGER)
+  { path: 'admin/dashboard', component: AdminDashboard, canActivate: [roleGuard('ADMIN', 'MANAGER')] },
+  { path: 'admin/customers', component: CustomerList, canActivate: [roleGuard('ADMIN', 'MANAGER')] },
+  { path: 'admin/customers/new', component: CustomerForm, canActivate: [roleGuard('ADMIN', 'MANAGER')] },
+  { path: 'admin/customers/edit/:id', component: CustomerForm, canActivate: [roleGuard('ADMIN', 'MANAGER')] },
+  { path: 'admin/loan-products', component: LoanProductList, canActivate: [roleGuard('ADMIN', 'MANAGER')] },
+  { path: 'admin/loan-products/new', component: LoanProductForm, canActivate: [roleGuard('ADMIN', 'MANAGER')] },
+  { path: 'admin/loan-products/edit/:code', component: LoanProductForm, canActivate: [roleGuard('ADMIN', 'MANAGER')] },
+  { path: 'admin/all-loans', component: AllLoans, canActivate: [roleGuard('ADMIN', 'MANAGER')] },
 
   // Fallback
   { path: '**', redirectTo: '' }

@@ -1,141 +1,45 @@
 <div class="container-fluid px-4 py-4">
-  <nav aria-label="breadcrumb" class="mb-3">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin/dashboard" class="text-decoration-none">Dashboard</a></li>
-      <li class="breadcrumb-item active">All Loans</li>
-    </ol>
-  </nav>
-
+  <nav aria-label="breadcrumb" class="mb-3"><ol class="breadcrumb"><li class="breadcrumb-item"><a routerLink="/admin/dashboard" class="text-decoration-none">Dashboard</a></li><li class="breadcrumb-item active">All Loans</li></ol></nav>
   <div class="card border-0 shadow-sm">
     <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
       <h5 class="fw-bold mb-0"><i class="bi bi-file-earmark-text me-2"></i>All Loan Accounts</h5>
-      <select class="form-select form-select-sm" style="width: auto;">
+      <select class="form-select form-select-sm" style="width:auto" [ngModel]="filterStatus()" (ngModelChange)="filterStatus.set($event)">
         <option value="">All Statuses</option>
-        <option>PENDING</option>
-        <option>ACTIVE</option>
-        <option>REJECTED</option>
-        <option>CLOSED</option>
-        <option>OVERDUE</option>
+        <option>PENDING</option><option>ACTIVE</option><option>REJECTED</option><option>CLOSED</option><option>OVERDUE</option>
       </select>
     </div>
     <div class="card-body p-0">
-      <div class="table-responsive">
-        <table class="table table-hover mb-0">
-          <thead class="table-light">
-            <tr>
-              <th>Loan ID</th>
-              <th>Customer</th>
-              <th>Product</th>
-              <th>Type</th>
-              <th>Amount</th>
-              <th>EMI</th>
-              <th>Start Date</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>#1001</strong></td>
-              <td>Rahul Sharma</td>
-              <td>LP001</td>
-              <td><span class="badge bg-light text-dark border">HOME</span></td>
-              <td>₹15,00,000</td>
-              <td>₹25,000</td>
-              <td>2026-01-15</td>
-              <td><span class="badge badge-active">ACTIVE</span></td>
-              <td>
-                <a routerLink="/customer/loan-detail/1001" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
-                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>#1002</strong></td>
-              <td>Rahul Sharma</td>
-              <td>LP002</td>
-              <td><span class="badge bg-light text-dark border">PERSONAL</span></td>
-              <td>₹2,00,000</td>
-              <td>₹8,500</td>
-              <td>2026-07-01</td>
-              <td><span class="badge badge-pending">PENDING</span></td>
-              <td>
-                <a routerLink="/customer/loan-detail/1002" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
-                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>#1003</strong></td>
-              <td>Rahul Sharma</td>
-              <td>LP003</td>
-              <td><span class="badge bg-light text-dark border">EDUCATION</span></td>
-              <td>₹1,50,000</td>
-              <td>₹6,200</td>
-              <td>2025-06-01</td>
-              <td><span class="badge badge-closed">CLOSED</span></td>
-              <td>
-                <a routerLink="/customer/loan-detail/1003" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
-                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>#1004</strong></td>
-              <td>Rahul Sharma</td>
-              <td>LP001</td>
-              <td><span class="badge bg-light text-dark border">HOME</span></td>
-              <td>₹25,00,000</td>
-              <td>₹42,000</td>
-              <td>2026-03-10</td>
-              <td><span class="badge badge-overdue">OVERDUE</span></td>
-              <td>
-                <a routerLink="/customer/loan-detail/1004" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
-                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>#1005</strong></td>
-              <td>Priya Patel</td>
-              <td>LP001</td>
-              <td><span class="badge bg-light text-dark border">HOME</span></td>
-              <td>₹12,00,000</td>
-              <td>₹20,000</td>
-              <td>2026-07-03</td>
-              <td><span class="badge badge-pending">PENDING</span></td>
-              <td>
-                <a routerLink="/customer/loan-detail/1005" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
-                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>#1006</strong></td>
-              <td>Amit Verma</td>
-              <td>LP003</td>
-              <td><span class="badge bg-light text-dark border">EDUCATION</span></td>
-              <td>₹5,00,000</td>
-              <td>₹12,000</td>
-              <td>2026-07-05</td>
-              <td><span class="badge badge-pending">PENDING</span></td>
-              <td>
-                <a routerLink="/customer/loan-detail/1006" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
-                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>#1007</strong></td>
-              <td>Sneha Reddy</td>
-              <td>LP002</td>
-              <td><span class="badge bg-light text-dark border">PERSONAL</span></td>
-              <td>₹2,50,000</td>
-              <td>₹10,500</td>
-              <td>2026-07-08</td>
-              <td><span class="badge badge-pending">PENDING</span></td>
-              <td>
-                <a routerLink="/customer/loan-detail/1007" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
-                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      @if (loanService.loading()) {
+        <app-loading message="Loading loans..." />
+      } @else if (filteredLoans().length === 0) {
+        <app-empty-state icon="bi-file-earmark-x" title="No Loans" message="No loan accounts found." />
+      } @else {
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead class="table-light"><tr><th>ID</th><th>Customer</th><th>Code</th><th>Type</th><th>Amount</th><th>EMI</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              @for (loan of filteredLoans(); track loan.loanAccountId) {
+                <tr>
+                  <td><strong>#{{ loan.loanAccountId }}</strong></td>
+                  <td>{{ loan.customerName }}</td>
+                  <td>{{ loan.loanCode }}</td>
+                  <td><span class="badge bg-light text-dark border">{{ loan.loanType }}</span></td>
+                  <td>{{ loan.loanAmount | currency:'INR':'symbol':'1.0-0' }}</td>
+                  <td>{{ loan.emiAmount | currency:'INR':'symbol':'1.0-0' }}</td>
+                  <td><span class="badge" [class]="'badge-' + loan.loanStatus.toLowerCase()">{{ loan.loanStatus }}</span></td>
+                  <td>
+                    <a [routerLink]="['/customer/loan-detail', loan.loanAccountId]" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
+                    @if (loan.loanStatus === 'ACTIVE') {
+                      <button class="btn btn-sm btn-outline-warning me-1" (click)="closeLoan(loan.loanAccountId)" title="Close"><i class="bi bi-lock"></i></button>
+                    }
+                    <button class="btn btn-sm btn-outline-danger" (click)="deleteLoan(loan.loanAccountId)" [disabled]="deleteLoading() === loan.loanAccountId"><i class="bi bi-trash"></i></button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
     </div>
   </div>
 </div>

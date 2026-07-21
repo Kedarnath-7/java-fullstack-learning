@@ -9,6 +9,6 @@ public class OrderItemSummaryDTO {
 
     private Long id;
     private int quantity;
-
+    private ProductSummaryDTO product;
 
 }

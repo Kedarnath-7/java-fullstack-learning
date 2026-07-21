@@ -1,21 +1,111 @@
-/* NorthernArc Loan Management - Global Styles */
+/* NorthernArc Loan Management - Brand Theme */
 
+/* Brand Colors (from NorthernArc Brand Guidelines) */
+:root {
+  --na-space-blue: #4fc6e0;
+  --na-jet-black: #000104;
+  --na-star-white: #ffffff;
+  --na-cool-grey: #939598;
+  --na-light-grey: #d1d3d4;
+  --na-space-blue-light: rgba(79, 198, 224, 0.1);
+  --na-space-blue-hover: #3ab5cf;
+
+  /* Override Bootstrap primary with Space Blue */
+  --bs-primary: #4fc6e0;
+  --bs-primary-rgb: 79, 198, 224;
+  --bs-link-color: #4fc6e0;
+  --bs-link-hover-color: #3ab5cf;
+}
+
+/* Override Bootstrap .btn-primary */
+.btn-primary {
+  --bs-btn-bg: var(--na-space-blue);
+  --bs-btn-border-color: var(--na-space-blue);
+  --bs-btn-hover-bg: var(--na-space-blue-hover);
+  --bs-btn-hover-border-color: var(--na-space-blue-hover);
+  --bs-btn-active-bg: #2ea4ba;
+  --bs-btn-active-border-color: #2ea4ba;
+  --bs-btn-disabled-bg: var(--na-space-blue);
+  --bs-btn-disabled-border-color: var(--na-space-blue);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--na-space-blue);
+  --bs-btn-border-color: var(--na-space-blue);
+  --bs-btn-hover-bg: var(--na-space-blue);
+  --bs-btn-hover-border-color: var(--na-space-blue);
+  --bs-btn-active-bg: var(--na-space-blue-hover);
+  --bs-btn-active-border-color: var(--na-space-blue-hover);
+}
+
+/* Override .bg-primary */
+.bg-primary {
+  background-color: var(--na-space-blue) !important;
+}
+.text-primary {
+  color: var(--na-space-blue) !important;
+}
+
+/* Navbar - Jet Black with clean brand look */
+.navbar-brand-na {
+  letter-spacing: 1.5px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+.navbar-brand-na .brand-northern {
+  font-weight: 700;
+}
+.navbar-brand-na .brand-arc {
+  font-weight: 300;
+  color: var(--na-space-blue);
+}
+.navbar-brand-na .brand-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--na-space-blue);
+  border-radius: 50%;
+  margin-left: 2px;
+  vertical-align: middle;
+}
+
+/* Active nav link accent */
+.navbar-dark .nav-link.active {
+  color: var(--na-space-blue) !important;
+  border-bottom: 2px solid var(--na-space-blue);
+}
+
+/* Badge overrides with brand color */
+.badge.bg-primary {
+  background-color: var(--na-space-blue) !important;
+}
+
+/* Footer */
+.footer-na {
+  background-color: var(--na-jet-black);
+}
+.footer-na a:hover {
+  color: var(--na-space-blue) !important;
+}
+
+/* Cards & Components */
 .card-hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.12) !important;
 }
 
 .stat-card {
   border-left: 4px solid;
 }
 
+/* Status badges */
 .badge-pending  { background-color: #ffc107; color: #212529; }
 .badge-active   { background-color: #198754; }
 .badge-rejected { background-color: #dc3545; }
-.badge-closed   { background-color: #6c757d; }
+.badge-closed   { background-color: var(--na-cool-grey); }
 .badge-overdue  { background-color: #fd7e14; }
 
 .table th {
@@ -31,10 +121,17 @@
   margin-bottom: 1rem;
 }
 
+/* Focus ring with brand color */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--na-space-blue);
+  box-shadow: 0 0 0 0.2rem var(--na-space-blue-light);
+}
+
 .loan-detail-label {
   font-weight: 600;
-  color: #6c757d;
-  font-size: 0.85rem;
+  color: var(--na-cool-grey);
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -43,7 +140,7 @@
   position: relative;
   padding-left: 2rem;
   padding-bottom: 1.5rem;
-  border-left: 2px solid #dee2e6;
+  border-left: 2px solid var(--na-light-grey);
 }
 .timeline-item:last-child {
   border-left: 2px solid transparent;
@@ -56,5 +153,78 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #0d6efd;
+  background: var(--na-space-blue);
 }
+
+/* Page background */
+body {
+  color: var(--na-jet-black);
+}
+
+/* Breadcrumb brand accent */
+.breadcrumb-item a {
+  color: var(--na-space-blue);
+}
+.breadcrumb-item a:hover {
+  color: var(--na-space-blue-hover);
+}
+
+/* Scrollbar (subtle, performance-safe) */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: var(--na-light-grey); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--na-cool-grey); }
+
+/* ===== DARK MODE OVERRIDES ===== */
+/* Bootstrap 5.3 handles most via [data-bs-theme="dark"] automatically.
+   Below are only brand-specific overrides. */
+
+[data-bs-theme="dark"] {
+  --na-jet-black: #0a0a0f;
+}
+
+[data-bs-theme="dark"] body {
+  color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .form-section {
+  background: #1a1a2e;
+}
+
+[data-bs-theme="dark"] .stat-card {
+  background: var(--bs-body-bg);
+}
+
+[data-bs-theme="dark"] .card {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-bs-theme="dark"] .shadow-sm {
+  box-shadow: 0 0.125rem 0.4rem rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-bs-theme="dark"] .table-light {
+  --bs-table-bg: #1a1a2e;
+  --bs-table-color: #c0c0c0;
+}
+
+[data-bs-theme="dark"] .loan-detail-label {
+  color: #8a8a9a;
+}
+
+[data-bs-theme="dark"] .timeline-item {
+  border-left-color: #2a2a3e;
+}
+
+[data-bs-theme="dark"] .footer-na {
+  background-color: #000000;
+}
+
+[data-bs-theme="dark"] ::-webkit-scrollbar-track { background: #1a1a1a; }
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb { background: #3a3a3a; }
+
+/* Logo switching helper */
+.logo-light { display: block; }
+.logo-dark { display: none; }
+[data-bs-theme="dark"] .logo-light { display: none; }
+[data-bs-theme="dark"] .logo-dark { display: block; }
