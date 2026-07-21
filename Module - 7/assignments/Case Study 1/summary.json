@@ -1,0 +1,23 @@
+{
+    "report_title": "Credit Risk & Loan Portfolio Analysis",
+    "total_customers": 99,
+    "high_risk_customers_count": 20,
+    "statistical_summary": {
+        "mean_loan_amount": 966800.0,
+        "median_salary": 97000.0,
+        "percentile_25_interest_rate": 9.1,
+        "percentile_75_interest_rate": 11.5,
+        "correlation_salary_loan": 0.2648,
+        "std_dev_loan_amount": 641461.21
+    },
+    "finance_metrics": {
+        "avg_debt_to_income_ratio": 1.617,
+        "avg_loan_utilization_pct": 50.89,
+        "default_pct": 33.33,
+        "npa_pct": 16.85,
+        "average_emi": 12689.9,
+        "expected_loss": 21735966.67,
+        "total_loans": 99,
+        "default_count": 33
+    }
+}

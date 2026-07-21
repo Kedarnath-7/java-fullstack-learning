@@ -1,0 +1,26 @@
+CustomerName,LoanType,LoanAmount,EMIAmount,AmountPaid,PendingEMIs,PaymentStatus,OutstandingAmount
+Aarav Sharma,Home Loan,3500000,10500,262500,35,Partial,3237500
+Priya Nair,Personal Loan,500000,8750,157500,42,Partial,342500
+Rahul Verma,Car Loan,900000,12500,450000,24,Partial,450000
+Neha Gupta,Education Loan,1200000,9800,117600,48,Partial,1082400
+Vikram Singh,Business Loan,7500000,15200,608000,20,Partial,6892000
+Anjali Reddy,Home Loan,4500000,7200,57600,52,Partial,4442400
+Karthik Raj,Gold Loan,350000,18500,925000,10,Partial,-575000
+Sneha Patil,Personal Loan,650000,9100,182000,40,Partial,468000
+Arjun Kumar,Car Loan,1100000,11000,308000,32,Partial,792000
+Meera Joshi,Business Loan,9500000,6400,38400,54,Partial,9461600
+Rohan Das,Home Loan,5200000,13800,441600,28,Partial,4758400
+Kavya Iyer,Education Loan,1500000,9900,237600,36,Partial,1262400
+Manoj Patel,Personal Loan,400000,16000,720000,15,Partial,-320000
+Divya Menon,Gold Loan,250000,8100,121500,45,Partial,128500
+Suresh Rao,Home Loan,6100000,11750,317250,33,Partial,5782750
+Pooja Sharma,Car Loan,850000,14300,543400,22,Partial,306600
+Ajay Mishra,Business Loan,12000000,6900,34500,55,Partial,11965500
+Nisha Kapoor,Education Loan,1800000,13250,410750,29,Partial,1389250
+Deepak Yadav,Personal Loan,550000,10400,228800,38,Partial,321200
+Ritika Sen,Home Loan,4800000,9600,182400,41,Partial,4617600
+Harish Kumar,Car Loan,950000,17600,844800,12,Partial,105200
+Aishwarya Rao,Business Loan,6800000,8400,117600,46,Partial,6682400
+Naveen Babu,Gold Loan,300000,12800,384000,30,Partial,-84000
+Lakshmi Devi,Personal Loan,700000,15000,630000,18,Partial,70000
+Sanjay Mehta,Home Loan,3900000,9300,158100,43,Partial,3741900
