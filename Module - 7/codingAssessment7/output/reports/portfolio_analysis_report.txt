@@ -1,0 +1,69 @@
+================================================================================
+MUTUAL FUND PORTFOLIO PERFORMANCE & RISK ANALYSIS REPORT
+Generated on: 2026-07-21 17:19:31
+================================================================================
+
+------------------------------------------------------------
+STATISTICAL ANALYSIS (NumPy)
+------------------------------------------------------------
+Mean Investment Amount:          ₹3,315.28
+Median Investor Income:          ₹1,170,000.00
+NAV Standard Deviation:          13.4023
+90th Percentile Fund Returns:    3.4385%
+95th Percentile Fund Returns:    3.4526%
+Income-Investment Correlation:   -0.3217
+
+------------------------------------------------------------
+FUND ANALYSIS
+------------------------------------------------------------
+Best Performing Fund:   Bluechip Equity Fund (3.47%)
+Worst Performing Fund:  Small Cap Opportunities (2.19%)
+Highest Expense Ratio:  Emerging Markets Fund (1.88%)
+Highest AUM Fund:       Small Cap Opportunities (₹33,051.00)
+Most Popular Fund:      Alpha Growth Fund (10 investors)
+
+------------------------------------------------------------
+FINANCE METRICS
+------------------------------------------------------------
+Total Portfolio Value:           ₹94,046.80
+Portfolio Return:                1.42%
+CAGR:                            -99.98%
+Absolute Return:                 -18.95%
+Annualized Return:               -99.98%
+Diversification Score:           52.34/100
+Average Holding Period:          9 days
+Sharpe Ratio:                    19.9529
+
+------------------------------------------------------------
+INVESTOR ANALYSIS
+------------------------------------------------------------
+
+Top 20 Investors by Portfolio Value:
+Rank  Name                     Portfolio Value     P&L            
+------------------------------------------------------------------
+1     Neha Gupta               ₹   17,041.35    ₹    257.60
+2     Ananya Iyer              ₹   16,074.40    ₹  1,489.40
+3     Aarav Sharma             ₹   15,408.20    ₹    231.40
+4     Vikram Singh             ₹   13,125.90    ₹  2,028.15
+5     Sneha Kapoor             ₹   11,901.30    ₹  2,361.50
+6     Priya Nair               ₹   11,347.60    ₹  2,815.95
+7     Arjun Reddy              ₹   11,103.10    ₹  1,556.15
+8     Rahul Verma              ₹    9,653.70    ₹  3,912.50
+9     Karthik Raj              ₹    6,031.80    ₹  4,893.00
+10    Meera Krishnan           ₹    6,002.95    ₹  5,412.15
+11    Rohit Menon              ₹        0.00    ₹      0.00
+12    Divya Srinivas           ₹        0.00    ₹      0.00
+13    Akash Patel              ₹        0.00    ₹      0.00
+14    Pooja Sharma             ₹        0.00    ₹      0.00
+15    Nikhil Rao               ₹        0.00    ₹      0.00
+16    Kavya Nair               ₹        0.00    ₹      0.00
+17    Harish Kumar             ₹        0.00    ₹      0.00
+18    Shalini Das              ₹        0.00    ₹      0.00
+19    Manoj Babu               ₹        0.00    ₹      0.00
+20    Aishwarya Rao            ₹        0.00    ₹      0.00
+
+High-Value Investors (meeting all criteria): 0
+
+================================================================================
+END OF REPORT
+================================================================================
