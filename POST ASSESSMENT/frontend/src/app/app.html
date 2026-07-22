@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+
+<div class="container py-4">
+  <!-- Error Alert -->
+  @if (error()) {
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <i class="bi bi-exclamation-triangle me-2"></i>{{ error() }}
+      <button type="button" class="btn-close" (click)="dismissError()"></button>
+    </div>
+  }
+
+  <!-- Loading Spinner -->
+  @if (loading()) {
+    <div class="d-flex justify-content-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  } @else {
+    <div class="row g-4">
+      <!-- Track Form Column -->
+      <div class="col-lg-4">
+        <app-track-form (trackCreated)="onTrackCreated($event)"></app-track-form>
+      </div>
+
+      <!-- Track List Column -->
+      <div class="col-lg-8">
+        <app-track-list
+          [tracks]="tracks()"
+          [searchResult]="searchResult()"
+          [searchError]="searchError()"
+          (deleteTrack)="onDeleteTrack($event)"
+          (searchByTitle)="onSearchByTitle($event)"
+          (clearSearch)="onClearSearch()"
+        ></app-track-list>
+      </div>
+    </div>
+  }
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+  <small>&copy; 2026 Music Track Manager. All rights reserved.</small>
+</footer>
